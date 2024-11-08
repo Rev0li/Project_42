@@ -16,7 +16,7 @@ void test_ft_isprint()
         c++;
     }
 
-    printf("Tests terminés pour ft_isprint.\n");
+    printf("ft_isprint Tests terminés\n");
 }
 
 int main()

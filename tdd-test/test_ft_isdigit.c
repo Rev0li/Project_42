@@ -20,7 +20,7 @@ void test_ft_isdigit()
         }
         c++;
     }
-    printf("Tests terminés (isdigit) pour toute la table ASCII.\n");
+    printf("isdigit Tests terminés \n");
 }
 
 int main()

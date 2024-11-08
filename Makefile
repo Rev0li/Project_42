@@ -8,11 +8,11 @@ TESTDIR = tdd-test
 EXEDIR = exe-test
 
 # Fichiers sources et tests
-SRC = $(wildcard $(SRCDIR)/ft_*.c)
+NAME = $(wildcard $(SRCDIR)/ft_*.c)
 TESTS = $(wildcard $(TESTDIR)/test_ft_*.c)
 
 # Création des noms de fichiers objets
-OBJ = $(SRC:.c=.o)
+OBJ = $(NAME:.c=.o)
 TEST_OBJ = $(TESTS:.c=.o)
 
 # Noms des exécutables dans exe-test (basés sur les noms des fichiers de test)

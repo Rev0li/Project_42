@@ -20,7 +20,7 @@ void test_ft_isascii()
     if (ft_isascii(128) != 0)
         printf("Test échoué pour le caractère non-ASCII (code ASCII 128)\n");
 
-    printf("Tests terminés pour ft_isascii.\n");
+    printf("ft_isascii Tests terminés(\n");
 }
 
 int main()

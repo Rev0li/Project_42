@@ -20,7 +20,7 @@ void test_ft_isalpha()
         }
         c++;
     }
-    printf("Tests terminés (isalpha) pour toute la table ASCII.\n");
+    printf("isalpha Tests terminés\n");
 }
 
 int main()

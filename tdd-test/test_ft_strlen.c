@@ -24,7 +24,7 @@ void test_ft_strlen()
     if (ft_strlen("Hello\n") != 6)
         printf("Test échoué : longueur de 'Hello\\n' devrait être 6\n");
 
-    printf("Tests terminés pour ft_strlen.\n");
+    printf("ft_strlen Tests terminés\n");
 }
 
 void test_ft_strlen_advanced()
@@ -53,7 +53,7 @@ void test_ft_strlen_advanced()
     if (ft_strlen(large_buffer) != 1000)
         printf("Test échoué pour une chaîne de 1000 caractères\n");
 
-    printf("Tests avancés terminés pour ft_strlen.\n");
+    printf("ft_strlen Tests avancés terminés\n");
 }
 int main()
 {

@@ -20,7 +20,7 @@ void test_ft_isalnum()
         }
         c++;
     }
-    printf("Tests terminés (ft_isalnum) pour toute la table ASCII .\n");
+    printf("ft_isalnum Tests terminés\n");
 }
 
 int main()
