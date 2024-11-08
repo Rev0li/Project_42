@@ -2,17 +2,18 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I.
 
+#NAME = libft.a
 # Répertoires
 SRCDIR = .
 TESTDIR = tdd-test
 EXEDIR = exe-test
 
 # Fichiers sources et tests
-NAME = $(wildcard $(SRCDIR)/ft_*.c)
+SRC = $(wildcard $(SRCDIR)/ft_*.c)
 TESTS = $(wildcard $(TESTDIR)/test_ft_*.c)
 
 # Création des noms de fichiers objets
-OBJ = $(NAME:.c=.o)
+OBJ = $(SRC:.c=.o)
 TEST_OBJ = $(TESTS:.c=.o)
 
 # Noms des exécutables dans exe-test (basés sur les noms des fichiers de test)
@@ -27,7 +28,7 @@ $(EXEDIR):
 
 # Compilation de chaque exécutable de test en utilisant les fichiers objets nécessaires
 $(EXEDIR)/test_%: $(OBJ) $(TESTDIR)/test_ft_%.o | $(EXEDIR)
-	$(CC) $(CFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) $^ -o $@ -lbsd
 
 # Génération des fichiers objets pour chaque source et chaque test
 %.o: %.c
