@@ -6,43 +6,31 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 12:18:06 by okientzl          #+#    #+#             */
-/*   Updated: 2024/11/08 18:20:29 by okientzl         ###   ########.fr       */
+/*   Updated: 2024/11/12 09:26:27 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t	i;
-	unsigned char	*d;
+	unsigned char		*d;
 	const unsigned char	*s;
+
 	d = (unsigned char *)dest;
 	s = (const unsigned char *)src;
-
-	if (d == s || n == 0) // Nothing to do if source and destination are the same or size is 0
-		return dest;
-
+	if (d == s || n == 0)
+		return (dest);
 	if (d < s)
 	{
-		// Forward copy (similar to memcpy)
-		i = 0;
-		while (i < n)
-		{
-			d[i] = s[i];
-			i++;
-		}
+		while (n--)
+			*d++ = *s++;
 	}
 	else
 	{
-		// Backward copy to handle overlap correctly
-		i = n;
-		while (i > 0)
-		{
-			i--;
-			d[i] = s[i];
-		}
+		d += n;
+		s += n;
+		while (n--)
+			*--d = *--s;
 	}
-
-	return dest;
+	return (dest);
 }
-

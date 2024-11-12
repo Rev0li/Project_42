@@ -6,7 +6,7 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:15:04 by okientzl          #+#    #+#             */
-/*   Updated: 2024/11/08 18:29:07 by okientzl         ###   ########.fr       */
+/*   Updated: 2024/11/12 08:16:46 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -14,6 +14,7 @@
 char	*ft_strrchr(const char *s, int c)
 {
 	const char	*last_occurrence;
+
 	last_occurrence = NULL;
 	while (*s)
 	{
@@ -22,6 +23,6 @@ char	*ft_strrchr(const char *s, int c)
 		s++;
 	}
 	if (c == '\0')
-		return (char *)s;
-	return (char *)last_occurrence;
+		return ((char *)s);
+	return ((char *)last_occurrence);
 }

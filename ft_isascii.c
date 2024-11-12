@@ -6,14 +6,14 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 12:17:30 by okientzl          #+#    #+#             */
-/*   Updated: 2024/11/08 12:17:32 by okientzl         ###   ########.fr       */
+/*   Updated: 2024/11/12 08:21:04 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isascii(int c)
 {
 	if (c >= 0 && c <= 127)
-		return 1;
+		return (1);
 	else
-		return 0;
+		return (0);
 }
