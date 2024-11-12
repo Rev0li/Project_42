@@ -13,7 +13,7 @@
 # define LIBFT_H
 
 # include <stdlib.h>
-# include <bsd/string.h>
+# include <string.h>
 # include <stddef.h>
 # include <stdio.h>
 

@@ -17,26 +17,26 @@ void test_ft_strjoin()
     result = ft_strjoin("hello", "world");
     snprintf(expected, sizeof(expected), "%s", "helloworld");
     if (result && strcmp(result, expected) == 0)
-        printf("| %-20s | [SUCCÈS]                |\n", "helloworld");
+        printf("| %-20s | [SUCCÈS]                |\n", "\"hello\", \"world\"");
     else
-        printf("| %-20s | [ÉCHOUÉ] Résultat: %s  |\n", "helloworld", result ? result : "NULL");
+        printf("| %-20s | [ÉCHOUÉ] Résultat: %s  |\n", "\"hello\", \"world\"", result ? result : "NULL");
     free(result);
 
     // Cas 2 : Chaîne vide et chaîne non vide
     result = ft_strjoin("", "world");
     snprintf(expected, sizeof(expected), "%s", "world");
     if (result && strcmp(result, expected) == 0)
-        printf("| %-20s | [SUCCÈS]                |\n", "world");
+        printf("| %-20s | [SUCCÈS]                |\n", "\"\", \"world\"");
     else
-        printf("| %-20s | [ÉCHOUÉ] Résultat: %s  |\n", "world", result ? result : "NULL");
+        printf("| %-20s | [ÉCHOUÉ] Résultat: %s  |\n", "\"\", \"world\"", result ? result : "NULL");
     free(result);
 
     result = ft_strjoin("hello", "");
     snprintf(expected, sizeof(expected), "%s", "hello");
     if (result && strcmp(result, expected) == 0)
-        printf("| %-20s | [SUCCÈS]                |\n", "hello");
+        printf("| %-20s | [SUCCÈS]                |\n", "\"hello\", \"\"");
     else
-        printf("| %-20s | [ÉCHOUÉ] Résultat: %s  |\n", "hello", result ? result : "NULL");
+        printf("| %-20s | [ÉCHOUÉ] Résultat: %s  |\n", "\"hello\", \"\"", result ? result : "NULL");
     free(result);
 
     // Cas 3 : Deux chaînes vides

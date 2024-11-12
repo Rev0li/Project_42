@@ -8,7 +8,7 @@ void test_ft_substr()
 		char expected[20];
 
 		printf("\n+------------------------------------------------+\n");
-		printf("| Tests pour ft_ubstr                            |\n");
+		printf("| Tests pour ft_substr                            |\n");
 		printf("+----------------------+-------------------------+\n");
 		printf("| Cas                  | Résultat                |\n");
 		printf("+----------------------+-------------------------+\n");
