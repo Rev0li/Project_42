@@ -6,7 +6,7 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:31:04 by okientzl          #+#    #+#             */
-/*   Updated: 2024/11/12 13:13:48 by okientzl         ###   ########.fr       */
+/*   Updated: 2024/11/13 16:43:40 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -26,53 +26,26 @@ int	alloc(int n)
 	return (i);
 }
 
-char	*special_cases(int n)
-{
-	char	*result;
-
-	if (n == -2147483648)
-	{
-		result = (char *)malloc(12 * sizeof(char));
-		if (!result)
-			return (NULL);
-		ft_strlcpy(result, "-2147483648", 12);
-		return (result);
-	}
-	if (n == 0)
-	{
-		result = (char *)malloc(2 * sizeof(char));
-		if (!result)
-			return (NULL);
-		result[0] = '0';
-		result[1] = '\0';
-		return (result);
-	}
-	return (NULL);
-}
-
 char	*ft_itoa(int n)
 {
-	char	*result;
-	int		is_negative;
-	int		len;
+	char			*result;
+	long int		ln;
+	int				len;
 
-	result = special_cases(n);
-	if (result)
-		return (result);
+	ln = n;
 	len = alloc(n);
 	result = (char *)malloc((len + 1) * sizeof(char));
 	if (!result)
 		return (NULL);
 	result[len] = '\0';
-	is_negative = (n < 0);
-	if (is_negative)
-		n = -n;
+	if (ln < 0)
+		ln = -ln;
 	while (len--)
 	{
-		result[len] = n % 10 + '0';
-		n = n / 10;
+		result[len] = ln % 10 + '0';
+		ln = ln / 10;
 	}
-	if (is_negative)
+	if (n < 0)
 		result[0] = '-';
 	return (result);
 }
