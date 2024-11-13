@@ -6,7 +6,7 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:15:04 by okientzl          #+#    #+#             */
-/*   Updated: 2024/11/12 08:16:46 by okientzl         ###   ########.fr       */
+/*   Updated: 2024/11/13 14:20:38 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -22,7 +22,7 @@ char	*ft_strrchr(const char *s, int c)
 			last_occurrence = s;
 		s++;
 	}
-	if (c == '\0')
+	if ((char)c == '\0')
 		return ((char *)s);
 	return ((char *)last_occurrence);
 }
