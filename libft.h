@@ -16,6 +16,8 @@
 # include <string.h>
 # include <stddef.h>
 # include <stdio.h>
+# include <unistd.h>
+
 
 // Prototypes des fonctions(part one)
 int		ft_isalpha(int c);

@@ -1,4 +1,5 @@
 #include "libft.h"
+#include <bsd/string.h>
 
 void print_table_header(const char *test_name)
 {

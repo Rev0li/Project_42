@@ -1,11 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/13 10:56:31 by okientzl          #+#    #+#             */
+/*   Updated: 2024/11/13 10:59:55 by okientzl         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "libft.h"
 #include <stdlib.h>
 
 static int	count_words(char const *s, char c)
 {
-	int	count = 0;
-	int	in_word = 0;
+	int	count;
+	int	in_word;
 
+	count = 0;
+	in_word = 0;
 	while (*s)
 	{
 		if (*s != c && !in_word)
@@ -22,9 +35,10 @@ static int	count_words(char const *s, char c)
 
 static char	*malloc_word(char const *s, char c)
 {
-	int		len = 0;
+	int		len;
 	char	*word;
 
+	len = 0;
 	while (s[len] && s[len] != c)
 		len++;
 	word = (char *)malloc((len + 1) * sizeof(char));
@@ -38,13 +52,13 @@ static char	*malloc_word(char const *s, char c)
 
 static char	**free_all(char **result, int i)
 {
-    while (i > 0)
-    {
-        i--;
-        free(result[i]);
-    }
-    free(result);
-    return (NULL);
+	while (i > 0)
+	{
+		i--;
+		free(result[i]);
+	}
+	free(result);
+	return (NULL);
 }
 
 char	**ft_split(char const *s, char c)
