@@ -6,12 +6,12 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:31:04 by okientzl          #+#    #+#             */
-/*   Updated: 2024/11/13 16:43:40 by okientzl         ###   ########.fr       */
+/*   Updated: 2024/11/14 09:06:02 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int	alloc(int n)
+static int	alloc(int n)
 {
 	int	i;
 

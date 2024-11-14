@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 15:13:19 by okientzl          #+#    #+#             */
-/*   Updated: 2024/11/14 09:10:33 by okientzl         ###   ########.fr       */
+/*   Created: 2024/11/14 14:28:38 by okientzl          #+#    #+#             */
+/*   Updated: 2024/11/14 14:42:40 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	size_t	i;
-	size_t	j;
-
-	if (!*needle)
-		return ((char *)haystack);
-	i = 0;
-	while (haystack[i] && i < len)
+	while (lst->next != NULL)
 	{
-		j = 0;
-		while (haystack[i + j] == needle[j] && (i + j) < len)
-		{
-			if (!needle[j + 1])
-				return ((char *)&haystack[i]);
-			j++;
-		}
-		i++;
+		lst = lst->next;
 	}
-	return (NULL);
+	lst->next = new;
 }
