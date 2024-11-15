@@ -6,16 +6,24 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:28:38 by okientzl          #+#    #+#             */
-/*   Updated: 2024/11/14 14:42:40 by okientzl         ###   ########.fr       */
+/*   Updated: 2024/11/15 10:26:32 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	while (lst->next != NULL)
+	t_list	*current;
+
+	current = *lst;
+	if (*lst == NULL)
 	{
-		lst = lst->next;
+		*lst = new;
+		return ;
 	}
-	lst->next = new;
+	while (current->next != NULL)
+	{
+		current = current->next;
+	}
+	current->next = new;
 }

@@ -6,7 +6,7 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:31:04 by okientzl          #+#    #+#             */
-/*   Updated: 2024/11/14 09:06:02 by okientzl         ###   ########.fr       */
+/*   Updated: 2024/11/15 14:41:13 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -49,3 +49,39 @@ char	*ft_itoa(int n)
 		result[0] = '-';
 	return (result);
 }
+// #include <string.h>
+// #include <stdio.h>
+// int main()
+// {
+// 	int list[] = {
+// 		0,
+// 		123456,
+// 		-123,
+// 		-2147483648,
+// 		2147483647
+// 	};
+// 	if (!strcmp(ft_itoa(list[0]),"0"))
+// 		printf("%20d  [SUCCES]\n", list[0]);
+// 	else
+// 		printf("%20d [FAIL]\n", list[0]);
+//
+// 	if (!strcmp(ft_itoa(list[1]),"123456"))
+// 		printf("%20d  [SUCCES]\n", list[1]);
+// 	else
+// 		printf("%20d [FAIL]\n", list[1]);
+//
+// 	if (!strcmp(ft_itoa(list[2]),"-123"))
+// 		printf("%20d  [SUCCES]\n", list[2]);
+// 	else
+// 		printf("%20d [FAIL]\n", list[2]);
+//
+// 	if (!strcmp(ft_itoa(list[3]),"-2147483648"))
+// 		printf("%20d  [SUCCES]\n", list[3]);
+// 	else
+// 		printf("%20d [FAIL]\n", list[3]);
+//
+// 	if (!strcmp(ft_itoa(list[4]),"2147483647"))
+// 		printf("%20d  [SUCCES]\n", list[4]);
+// 	else
+// 		printf("%20d [FAIL]\n", list[4]);
+// }

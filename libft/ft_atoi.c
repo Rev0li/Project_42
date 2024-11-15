@@ -6,7 +6,7 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 15:16:11 by okientzl          #+#    #+#             */
-/*   Updated: 2024/11/12 08:23:18 by okientzl         ###   ########.fr       */
+/*   Updated: 2024/11/15 13:22:12 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,3 +34,33 @@ int	ft_atoi(const char *str)
 	}
 	return (result * sign);
 }
+// #include <stdio.h>
+// #include <stdlib.h>
+// int main()
+// {
+// 	char *list[] = {
+// 		"12345",
+// 		"      123456",
+// 		"   -123",
+// 		"   ++1",
+// 		"  --1","0",
+// 		"-2147483648",
+// 		"2147483647",
+// 		"",
+// 		"\t \n \v \f \r",
+// 		"010",
+// 		"123a4",
+// 		NULL
+// 	};
+//
+// 	int	i = 0;
+// 	while (list[i] != NULL)
+// 	{
+// 		if (ft_atoi(*list) == atoi(*list))
+// 			printf("%20s  [SUCCES]\n", list[i]);
+// 		else
+// 			printf("%20s [FAIL]\n", list[i]);
+// 		i++;
+// 	}
+//
+// }
