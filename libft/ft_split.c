@@ -6,7 +6,7 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 10:56:31 by okientzl          #+#    #+#             */
-/*   Updated: 2024/11/14 09:09:17 by okientzl         ###   ########.fr       */
+/*   Updated: 2024/11/17 12:38:01 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -84,6 +84,69 @@ char	**ft_split(char const *s, char c)
 		else
 			s++;
 	}
-	result[i] = '\0';
+	result[i] = NULL;
 	return (result);
 }
+// #include <stdio.h>
+// #include <string.h>
+// void check_split_result(char **result, 
+// char **expected, const char *description)
+// {
+//     int i = 0;
+//     int success = 1;
+//
+//     while (expected[i])
+//     {
+//         if (!result[i] || strcmp(result[i], expected[i]) != 0)
+//         {
+//             success = 0;
+//             break;
+//         }
+//         i++;
+//     }
+//
+//     if (success && !result[i]) 
+// 		printf("| %-20s | [SUCCÈS] |\n", description);
+//     else
+//     {
+//         printf("| %-20s | [ÉCHOUÉ] Résultat: ", description);
+//         i = 0;
+//         while (result && result[i])
+//         {
+//             printf("\"%s\" ", result[i]);
+//             free(result[i]);
+//             i++;
+//         }
+//         printf("|\n");
+//     }
+//     free(result);
+// }
+// int	main()
+// {
+//     char **result;
+//     char *expected1[] = {"hello", "world", "42", NULL};
+//     char *expected2[] = {"42", "school", NULL};
+//     char *expected3[] = {"hello", NULL};
+//     char *expected4[] = {NULL};
+//     char *expected5[] = {"hello", NULL};
+//     char *expected6[] = {NULL};
+//
+//     result = ft_split("hello world 42", ' ');
+//     check_split_result(result, expected1, "split spaces");
+//
+//     result = ft_split("42---school", '-');
+//     check_split_result(result, expected2, "split -");
+//
+//     result = ft_split("--hello--", '-');
+//     check_split_result(result, expected3, "split edge -");
+//
+//     result = ft_split("", ' ');
+//     check_split_result(result, expected4, "split empty string");
+//
+//     result = ft_split("hello", '-');
+//     check_split_result(result, expected5, "no delimiters");
+//
+//     result = ft_split("---", '-');
+//     check_split_result(result, expected6, "delimiter only -");
+//
+// }

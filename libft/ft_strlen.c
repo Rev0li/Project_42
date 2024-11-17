@@ -6,11 +6,11 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 12:19:47 by okientzl          #+#    #+#             */
-/*   Updated: 2024/11/12 09:00:23 by okientzl         ###   ########.fr       */
+/*   Updated: 2024/11/17 13:23:00 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *string)
+int	ft_strlen(const char *string)
 {
 	int	i;
 
