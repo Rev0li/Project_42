@@ -6,7 +6,7 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 10:56:31 by okientzl          #+#    #+#             */
-/*   Updated: 2024/11/17 12:38:01 by okientzl         ###   ########.fr       */
+/*   Updated: 2024/11/18 11:06:39 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -34,7 +34,7 @@ static int	count_words(char const *s, char c)
 
 static char	*malloc_word(char const *s, char c)
 {
-	int		len;
+	size_t	len;
 	char	*word;
 
 	len = 0;

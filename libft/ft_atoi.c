@@ -6,15 +6,16 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 15:16:11 by okientzl          #+#    #+#             */
-/*   Updated: 2024/11/15 13:22:12 by okientzl         ###   ########.fr       */
+/*   Updated: 2024/11/18 11:54:19 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
-	int	result;
+	size_t	i;
+	int		sign;
+	int		result;
 
 	i = 0;
 	sign = 1;
@@ -50,9 +51,9 @@ int	ft_atoi(const char *str)
 // 		"\t \n \v \f \r",
 // 		"010",
 // 		"123a4",
+// 		"-9223372036854775807",
 // 		NULL
 // 	};
-//
 // 	int	i = 0;
 // 	while (list[i] != NULL)
 // 	{
@@ -62,5 +63,4 @@ int	ft_atoi(const char *str)
 // 			printf("%20s [FAIL]\n", list[i]);
 // 		i++;
 // 	}
-//
 // }

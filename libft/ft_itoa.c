@@ -6,12 +6,12 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:31:04 by okientzl          #+#    #+#             */
-/*   Updated: 2024/11/15 14:41:13 by okientzl         ###   ########.fr       */
+/*   Updated: 2024/11/18 10:42:48 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-static int	alloc(int n)
+static int	get_size(int n)
 {
 	int	i;
 
@@ -33,7 +33,7 @@ char	*ft_itoa(int n)
 	int				len;
 
 	ln = n;
-	len = alloc(n);
+	len = get_size(n);
 	result = (char *)malloc((len + 1) * sizeof(char));
 	if (!result)
 		return (NULL);

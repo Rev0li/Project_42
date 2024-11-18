@@ -6,7 +6,7 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 12:18:30 by okientzl          #+#    #+#             */
-/*   Updated: 2024/11/15 16:47:19 by okientzl         ###   ########.fr       */
+/*   Updated: 2024/11/18 10:56:46 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -21,6 +21,7 @@ void	ft_putstr_fd(char *s, int fd)
 		s++;
 	}
 }
+// write(fd, s, ft_strlen(s));
 // #include <fcntl.h>
 // #include <unistd.h>
 // #include <stdio.h>
