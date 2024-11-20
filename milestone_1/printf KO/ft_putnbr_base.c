@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 15:28:46 by okientzl          #+#    #+#             */
-/*   Updated: 2024/11/20 07:12:49 by okientzl         ###   ########.fr       */
+/*   Created: 2024/11/19 12:53:53 by okientzl          #+#    #+#             */
+/*   Updated: 2024/11/20 08:44:29 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
-#include <stdint.h>
+#include "ft_printf.h"
 
-void	*ft_calloc(size_t count, size_t size)
+int	ft_putnbr_base(unsigned long int n, char *base, int l_base, int written)
 {
-	void	*ptr;
-	char	*ret;
+	char	c;
 
-	if (size == 0)
+	if (n >= (unsigned long int)l_base)
 	{
-		ret = malloc(0);
-		return (ret);
+		written = ft_putnbr_base(n / l_base, base, l_base, written);
 	}
-	if (count > SIZE_MAX / size)
-		return (NULL);
-	ptr = malloc(count * size);
-	if (!ptr)
-		return (NULL);
-	ft_memset(ptr, 0, count * size);
-	return (ptr);
+	c = base[n % l_base];
+	write(1, &c, 1);
+	return (written + 1);
 }

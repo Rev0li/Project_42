@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   handle_putstr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 15:28:46 by okientzl          #+#    #+#             */
-/*   Updated: 2024/11/20 07:12:49 by okientzl         ###   ########.fr       */
+/*   Created: 2024/11/19 15:15:33 by okientzl          #+#    #+#             */
+/*   Updated: 2024/11/20 09:54:51 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
-#include <stdint.h>
+#include "ft_printf.h"
 
-void	*ft_calloc(size_t count, size_t size)
+int	handle_character(char c)
 {
-	void	*ptr;
-	char	*ret;
+	write(1, &c, 1);
+	return (1);
+}
 
-	if (size == 0)
+int	handle_string(char *str, int written)
+{
+	if (str == NULL)
 	{
-		ret = malloc(0);
-		return (ret);
+		written = write(1, "(null)", 6);
+		return (written);
 	}
-	if (count > SIZE_MAX / size)
-		return (NULL);
-	ptr = malloc(count * size);
-	if (!ptr)
-		return (NULL);
-	ft_memset(ptr, 0, count * size);
-	return (ptr);
+	while (*str)
+	{
+		write(1, str, 1);
+		written++;
+		str++;
+	}
+	return (written);
+}
+
+int	handle_percent(void)
+{
+	write(1, "%", 1);
+	return (1);
 }

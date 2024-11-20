@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 15:28:46 by okientzl          #+#    #+#             */
-/*   Updated: 2024/11/20 07:12:49 by okientzl         ###   ########.fr       */
+/*   Created: 2024/11/19 12:53:53 by okientzl          #+#    #+#             */
+/*   Updated: 2024/11/20 09:47:07 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
-#include <stdint.h>
+#include "ft_printf.h"
 
-void	*ft_calloc(size_t count, size_t size)
+int	ft_putnbr(int n, int written)
 {
-	void	*ptr;
-	char	*ret;
+	char	c;
 
-	if (size == 0)
+	if (n < 0)
 	{
-		ret = malloc(0);
-		return (ret);
+		if (n == -2147483648)
+		{
+			write(1, "-2147483648", 11);
+			return (written + 11);
+		}
+		write (1, "-", 1);
+		written++;
+		n = -n;
 	}
-	if (count > SIZE_MAX / size)
-		return (NULL);
-	ptr = malloc(count * size);
-	if (!ptr)
-		return (NULL);
-	ft_memset(ptr, 0, count * size);
-	return (ptr);
+	if (n >= 10)
+	{
+		written = ft_putnbr(n / 10, written);
+	}
+	c = (n % 10) + '0';
+	write(1, &c, 1);
+	return (written + 1);
 }
