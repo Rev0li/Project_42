@@ -6,7 +6,7 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 12:42:37 by okientzl          #+#    #+#             */
-/*   Updated: 2024/11/20 12:54:38 by okientzl         ###   ########.fr       */
+/*   Updated: 2024/11/21 11:47:33 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -16,8 +16,7 @@ int	ft_strlen(const char *s)
 	int	i;
 
 	i = 0;
-	while(s[i])
+	while (s[i])
 		i++;
 	return (i);
 }
-

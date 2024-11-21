@@ -1,23 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 12:38:29 by okientzl          #+#    #+#             */
-/*   Updated: 2024/11/21 13:41:39 by okientzl         ###   ########.fr       */
+/*   Created: 2024/11/12 10:31:04 by okientzl          #+#    #+#             */
+/*   Updated: 2024/11/21 14:00:22 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_putstr(char const *s)
+int	ft_putnbr(int n)
 {
-	int	len;
+	long	ln;
+	char	digits[12];
+	int		i;
+	int		len;
 
-	if (s == NULL)
-		return (ft_putstr("(null)"));
-	len = ft_strlen(s);
-	write(1, s, len);
+	len = 0;
+	ln = n;
+	if (ln < 0)
+	{
+		len += ft_putchar('-');
+		ln = -ln;
+	}
+	if (ln == 0)
+		return (ft_putchar('0'));
+	i = 0;
+	while (ln > 0)
+	{
+		digits[i++] = (ln % 10) + '0';
+		ln = ln / 10;
+	}
+	while (--i >= 0)
+		len += ft_putchar(digits[i]);
 	return (len);
 }
