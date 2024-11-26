@@ -18,9 +18,9 @@
 # include <stdint.h>
 # include <stdlib.h>
 
-int		ft_printf(const char *format, ...);
+int		ft_printf(const char *s, ...);
 int		ft_putchar(const char c);
-int		convert(const char *format, va_list args, int len);
+int		convert(const char *s, va_list args, int len);
 int		ft_putstr(char const *s);
 int		ft_strlen(const char *s);
 int		ft_pointer(uintptr_t ptr);

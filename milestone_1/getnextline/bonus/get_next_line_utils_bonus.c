@@ -1,15 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/24 13:23:02 by okientzl          #+#    #+#             */
-/*   Updated: 2024/11/26 09:43:47 by okientzl         ###   ########.fr       */
+/*   Created: 2024/11/26 10:25:57 by okientzl          #+#    #+#             */
+/*   Updated: 2024/11/26 12:05:12 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int	found_newline(t_list *list)
 {

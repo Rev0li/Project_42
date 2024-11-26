@@ -6,7 +6,7 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 07:45:21 by okientzl          #+#    #+#             */
-/*   Updated: 2024/11/21 08:02:59 by okientzl         ###   ########.fr       */
+/*   Updated: 2024/11/26 09:25:01 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -16,9 +16,15 @@ int	print_pointer(uintptr_t ptr, int len)
 	if (ptr < 16)
 	{
 		if (ptr <= 9)
-			ft_putchar(ptr + '0');
+		{
+			if (ft_putchar(ptr + '0') < 0)
+				return (-1);
+		}
 		else
-			ft_putchar(ptr -10 + 'a');
+		{
+			if (ft_putchar(ptr -10 + 'a') < 0)
+				return (-1);
+		}
 		return (1);
 	}
 	else

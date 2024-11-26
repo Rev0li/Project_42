@@ -1,17 +1,17 @@
-int	main ()
-{
-	int fd;
+#include "get_next_line.h"
+#include <fcntl.h>
+#include <stdio.h>
 
-    fd = open("monfichier.txt", O_RDONLY);
-    if (fd == -1)
-	{
-        perror("Erreur lors de l'ouverture");
-        return 1;
-    }
+int main(void) {
+	int fd = open("hardtest_cases.txt", O_RDONLY);
 
-    printf("Fichier ouvert avec succès, descripteur : %d\n", fd);
-	get_next_line(fd);
-    close(fd);
-    return 0;
+	char *line = get_next_line(fd);
+	while (line) {
+		printf("->%s<-", line);
+		free(line);
+		line = get_next_line(fd);
+	}
 
+	close(fd);
+	return 0;
 }
