@@ -1,0 +1,126 @@
+SET UP MACHINE
+Hostname: <id 42>42  //okentzl42 - revo08
+First user: Oliver - revo
+>use entire dsik and set up encrypted lvm
+>Sepqrqte /home partition
+>Yes
+>cancel
+Encrypt Disk: <password> 42
+Finish partitioning and write changes to disk
+>Yes
+>No
+deb.debian.org
+>No
+We will left in blank all software
+>continue
+>Yes
+>/dev/...
+
+USER AND GROUP
+Encrypte password: 42
+user: oliver
+password: revo
+su //to root permission
+apt install sudo
+sudo reboot
+sudo -V //verifie your install
+sudo adduser <login>
+sudo addgroup<name-group> user42
+cat /etc/group
+sudo adduser <user><groupname>
+
+SSH
+sudo apt update
+sudo apt install openssh-server
+sudo service ssh status
+sudo apt install vim
+/etc/ssh/sshd-config
+#Port22 -> Port4242
+#PermitRootLogin prohibit-password -> PermetRootLogin no
+/etc/ssh/ssh-config
+#Port22 -> Port4242
+sudo service ssh restart 
+sudo service ssh status
+
+INSTALL UFW
+sudo apt install ufw
+>Yes
+sudo ufw allow 4242
+sudo ufw status
+
+Setting up the sudo policies
+touche /etc/sudoers.d/sudo_config
+mkdir /var/log/sudo
+vim /etc/sudoers.d/sudo_config
+
+Default passwd_tries=3
+Default badpass-message="..."
+Default loglife="/var/log/sudo/sudo_config"
+Default log_input, log_output
+Default iolog_dir="var, log, sudo"
+Default requiretty
+Default secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+
+Total tries for entering the sudo password
+The message that will show when the pass faild
+Path where will the sudo logs will be stored
+What will be logged
+TTY is required lol.
+Falders that will be excluded of sudo
+
+SETTING UP A STRONG PASS POLICY
+vim /etc/login.defs
+PASS_MAX_DAYS99999 -> PASS_MAXX_DAYS30
+PASS_MIN_DAYS0 -> PASS_MIN_DAYS2
+
+sudo apt install libpram-pwquality
+
+vim /etc/pam.d/common-password
+retry=3
+minlen=10
+ucredit=-1
+dcredit=-1
+lcredit=-1
+maxrepeat=3
+reject_username
+difok=7
+enforce_for_root
+
+sudo chage -l <username>
+sudo chage -m <time> <username>
+suda chage -M <time> <username>
+
+CONNECTION SSH	
+lOG VM
+configuration
+Network
+advanced
+Port fowarding
+ADD new 
+4242
+ssh oliver@localhost -p 4242 
+
+ARCHITECTURE
+uname -a
+//grep is a keyword for select only *
+Free // it s keyword acces memory 
+awk // grep with line colomn option
+DF //view dist memory
+Who //date of last restat 
+-d // with time
+Check LVM 
+sblk 
+TCP connection 
+SS netsat -ta //archive
+IP
+ip link
+Number of commands excecuted with sudo 
+journaclctl
+CRONTAB
+sudo crontab -u root -e 
+*/10****sh/home/gemartion/monitoring.sh
+CREAT SIGNATURE 
+shasum machinename.vdi 
+
+BONUS 
+
