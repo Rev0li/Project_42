@@ -1,11 +1,17 @@
+Base user -> oliver | revo
+Base root -> su | revo08
+
+Final user -> oliver | Mdp -> Virtualmachine007
+Final root -> su | Mdp -> Mysupercomputer007
+
 SET UP MACHINE
 Hostname: <id 42>42  //okentzl42 - revo08
 First user: Oliver - revo
->use entire dsik and set up encrypted lvm
+>use entire dsik and set up encrypted lvm  // BONUS *******
 >Sepqrqte /home partition
 >Yes
 >cancel
-Encrypt Disk: <password> 42
+Encrypt Disk: <password> 42 BONUS encrypt
 Finish partitioning and write changes to disk
 >Yes
 >No
@@ -17,7 +23,7 @@ We will left in blank all software
 >/dev/...
 
 USER AND GROUP
-Encrypte password: 42
+Encrypte password: 42 BONUS encrypt
 user: oliver
 password: revo
 su //to root permission
@@ -57,7 +63,7 @@ Default passwd_tries=3
 Default badpass-message="..."
 Default loglife="/var/log/sudo/sudo_config"
 Default log_input, log_output
-Default iolog_dir="var, log, sudo"
+Default iolog_dir="var/log/sudo"
 Default requiretty
 Default secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
 
@@ -116,11 +122,150 @@ IP
 ip link
 Number of commands excecuted with sudo 
 journaclctl
+
 CRONTAB
 sudo crontab -u root -e 
 */10****sh/home/gemartion/monitoring.sh
 CREAT SIGNATURE 
 shasum machinename.vdi 
 
-BONUS 
+BONUS ******
+As the subject indicates, the size of the partition must be 500 megabytes
+primary
+beginning
+We choose boot as the mount point for our partition.
+We create a new partition
+We select the maximum size
+We select the type of partition, in this case logical
+We will choose the option not to mount it
+We will configure encrypted volumes. This way we can encrypt our partition
+We select which partition we want to encrypt
+We finish configuring the current partition
+>Yes
+>Cancel
+Again we must enter a password encr
+We will configure the logical volume manager
+>Yes
+>Create volume group
+"LVMGroup" as indicated in the subject
+>sda5 encrypt
+ Now we must create all the logical partitions. As we have to repeat the same actions several times,
+ there are captures that will not be documented
+: 
+LVMGroup-root		10G
+LVMGroup-swap		2.3G [SWAP]
+LVMGroup-home		5G
+LVMGroup-var		3G
+LVMGroup-srv		3G
+LVMGroup-tmp		3G
+LVMGroup-var--log	4G
+
+Now we can see how in the section where it shows us all our partitions and free space, all the logical partitions
+that we just created are already appearing. Good, we must configure all of them to select the file system
+that we want and the mount point indicated in the subject. Again we will go in order and select the first one that appears,
+which is home
+
+We must choose a file system as it currently does not have one
+Choose the Ext4 file system, it is the most commonly used file system in Linux distributions
+Now we need to select the mount point
+We select home as indicated in the subject
+ Again, these steps can become very repetitive so I won't comment much. We repeat everything the same way 
+ (except for the mount point) for root
+  Finally, we repeat the process again for var-log. In this case, we will have to manually enter the mount point.
+  We select the option No because we do not need additional packages
+
+WORDPRESS
+What is Lighttpd❓ Lighttpd is a web server designed to be fast, secure, flexible, and standards-compliant.
+It is optimized for environments where speed is a top priority because it consumes less CPU and RAM than other servers
+
+sudo apt install lighttpd
+sudo ufw allow 80
+sudo ufw status
+We add the rule that includes port 80. If you don't remember how to add rules in port forwarding. 
+Machine configuration → Network → Port forwarding → Replicate the capture
+
+sudo apt install wget zip
+cd /var/www
+sudo wget https://es.wordpress.org/lastest-en_GB.zip
+sudo unzip latest-en_GB.zip
+sudo mv html/ html_old
+sudo mv wordpress/ html
+sudo chmod -R 755 html
+
+MARIA_DB
+sudo apt install mariadb-server
+sudo mysql_secure_installation - N - N - Y - Y - Y - Y
+
+Switch to unix_socket authentication? 
+We choose N because we don't want it to switch to Unix socket authentication because we already have a protected root account.
+
+Change the root password? 
+We choose N. We do not want to change the root password. By default we have no password but in mariadb he is not really root as we must give him administrator permissions.
+
+Remove anonymous users? 
+We choose Y. By default when you install mariadb it has an anonymous user, 
+which allows anyone to log into mariadb without having to create their own user account. 
+This is designed for testing purposes and to make the installation smoother. 
+When we leave the development environment and want to move to a production environment we must remove the anonymous users.
+
+Disallow root login remotely? 
+Choose Y. Disabling root login remotely will prevent anyone from guessing the root password. 
+We will only be able to connect to root from localhost.
+
+Remove test database and access to it? Choose Y. 
+This will remove the test database and any users who have access to it.
+
+Reaload privilege tables now? Choose Y. 
+This will reload the MySQL permission tables so that the changes to the security settings will take effect immediately.
+
+mariadb
+CREATE DATABASE wp_database;
+SHOW DATABASES;
+CREATE USER 'gemartin'@'localhost' IDENTIFIED BY '12345';
+GRANT ALL PRIVILEGES ON wp_database.* TO 'gemartin'@'localhost';
+We update the permissions for the changes to take effect with the command FLUSH PRIVILEGES;
+exit
+
+PHP 
+sudo apt install php-cgi php-mysql
+cd /var/www/html
+cp wp-cinfog-sample.php wp-config.php
+nvim wp-config.php
+DB_NAME, 'wp_databse'
+DB_USER, 'gemartin'
+DB_PASSWORD, '12345'
+
+sudo lighty-enable-mod fastcgi
+sudo lighty-enable-mod fastcgi-php
+sudo service lighttpd force-reload
+navigateur : localhost
+We must fill in all the fields. In my case I have put the following
+localhost/wp-admin
+
+sudo apt update
+sudo apt upgrade
+By default, OpenLiteSpeed is available in the Debian 11 base repository. 
+So, you must run the following command to add the OpenLiteSpeed repository to your Debian system:
+
+wget -O - https://repo.litespeed.sh | sudo bash
+
+(If you received a error similar to: ..."curl: command not found", 
+you need install the application "curl" for able to running the script), so run this command below:
+
+sudo apt install curl -y
+
+After that run again the script to install OpenLiteSpeed:
+
+wget -O - https://repo.litespeed.sh | sudo bash
+
+sudo apt ipdate
+sudo apt install openlitespeed
+// change password OpenLiteSpeed
+sudo /usr/local/lsws/admin/misc/admpass.sh
+
+We configure the firewall to allow connections through ports 8088 and 7080. We then add the rules in the port forwarding.
+sudo ufw allow 8088/tcp
+sudo ufw allow 7080/tcp
+sudo ufw reload
+localhost:7080
 
