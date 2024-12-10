@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/24 13:21:41 by okientzl          #+#    #+#             */
-/*   Updated: 2024/12/05 07:40:06 by okientzl         ###   ########.fr       */
+/*   Created: 2024/12/04 16:01:10 by okientzl          #+#    #+#             */
+/*   Updated: 2024/12/05 07:39:53 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_free(char **str)
 {
@@ -83,18 +83,18 @@ char	*create_buf(char *storage, int fd)
 
 char	*get_next_line(int fd)
 {
-	static char		*storage = NULL;
+	static char		*storage[1024];
 	char			*line;
 
 	if (fd < 0)
 		return (NULL);
-	if ((storage && !ft_strchr(storage, '\n')) || !storage)
-		storage = create_buf(storage, fd);
-	if (!storage)
+	if ((storage[fd] && !ft_strchr(storage[fd], '\n')) || !storage[fd])
+		storage[fd] = create_buf(storage[fd], fd);
+	if (!storage[fd])
 		return (NULL);
-	line = get_current_line(storage);
+	line = get_current_line(storage[fd]);
 	if (!line)
-		return (ft_free(&storage));
-	storage = polish(storage);
+		return (ft_free(&storage[fd]));
+	storage[fd] = polish(storage[fd]);
 	return (line);
 }

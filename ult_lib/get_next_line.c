@@ -6,20 +6,20 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 13:21:41 by okientzl          #+#    #+#             */
-/*   Updated: 2024/12/05 07:40:06 by okientzl         ###   ########.fr       */
+/*   Updated: 2024/12/10 20:47:22 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "ult_lib.h"
 
-char	*ft_free(char **str)
+static char	*ft_free(char **str)
 {
 	free(*str);
 	*str = NULL;
 	return (NULL);
 }
 
-char	*polish(char *storage)
+static char	*polish(char *storage)
 {
 	char	*clean_buf;
 	char	*ptr;
@@ -42,7 +42,7 @@ char	*polish(char *storage)
 	return (clean_buf);
 }
 
-char	*get_current_line(char *storage)
+static char	*get_current_line(char *storage)
 {
 	char	*next_str;
 	char	*ptr;
@@ -56,7 +56,7 @@ char	*get_current_line(char *storage)
 	return (next_str);
 }
 
-char	*create_buf(char *storage, int fd)
+static char	*create_buf(char *storage, int fd)
 {
 	int		return_read;
 	char	*tmp;

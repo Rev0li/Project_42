@@ -6,7 +6,7 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 13:18:58 by okientzl          #+#    #+#             */
-/*   Updated: 2024/12/05 07:39:59 by okientzl         ###   ########.fr       */
+/*   Updated: 2024/11/24 13:21:30 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,20 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-char	*ft_free(char **str);
-char	*polish(char *storage);
-char	*get_current_line(char *storage);
-char	*create_buf(char *storage, int fd);
-char	*get_next_line(int fd);
+typedef struct s_list
+{
+	char			*str_buf;
+	struct s_list	*next;
+}				t_list;
 
-char	*ft_strjoin(char *s1, char *s2);
-size_t	ft_strlen(char *s);
-char	*ft_strchr(char *s, int c);
-char	*ft_substr(char *s, unsigned int start, size_t len);
+int		found_newline(t_list *list);
+t_list	*find_last_node(t_list *list);
+char	*get_line(t_list *list);
+void	copy_str(t_list *list, char *str);
+int		len_to_newline(t_list *list);
+void	polish_list(t_list **list);
+char	*get_next_line(int fd);
+void	dealloc(t_list **list, t_list *clean_node, char *buf);
+void	create_list(t_list **list, int fd);
+
 #endif
