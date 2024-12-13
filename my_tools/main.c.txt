@@ -1,0 +1,138 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "ult_lib.h"  // Assure-toi que c'est le bon nom de ton header
+#include <fcntl.h>
+// Fonction pour afficher un résultat booléen
+void	print_bool(int result, char *func_name)
+{
+	printf("%s: %s\n", func_name, result ? "TRUE" : "FALSE");
+}
+
+// Fonction pour afficher une liste chaînée
+void	print_list(t_list *lst)
+{
+	while (lst)
+	{
+		printf("Node content: %s\n", (char *)lst->content);
+		lst = lst->next;
+	}
+}
+void	dummy_free(void *content) { (void)content; }
+
+int	main(void)
+{
+	// ==========================
+	// Tests pour char_utils.c
+	// ==========================
+	print_bool(ft_isalpha('A'), "ft_isalpha('A')");
+	print_bool(ft_isdigit('1'), "ft_isdigit('1')");
+	print_bool(ft_isalnum('a'), "ft_isalnum('a')");
+	print_bool(ft_isascii(127), "ft_isascii(127)");
+	print_bool(ft_isprint(32), "ft_isprint(32)");
+
+	// ==========================
+	// Tests pour conversion_utils.c
+	// ==========================
+	printf("ft_itoa(42) = %s\n", ft_itoa(42));
+	printf("ft_tolower('A') = %c\n", ft_tolower('A'));
+	printf("ft_toupper('a') = %c\n", ft_toupper('a'));
+
+	// ==========================
+	// Tests pour conversion_utils_2.c
+	// ==========================
+	printf("ft_atoi(\"  -42\") = %d\n", ft_atoi("  -42"));
+
+	// ==========================
+	// Tests pour list_utils.c
+	// ==========================
+	t_list *node1 = ft_lstnew("Hello");
+	t_list *node2 = ft_lstnew("42");
+	ft_lstadd_back(&node1, node2);
+	print_list(node1);
+//	ft_lstdelone(node2, dummy_free);
+	ft_lstclear(&node1, dummy_free);
+
+	// ==========================
+	// Tests pour memory_utils.c
+	// ==========================
+	char mem[10];
+	ft_memset(mem, 'A', 5);
+	mem[5] = '\0';
+	printf("ft_memset: %s\n", mem);
+
+	char src[6] = "Hello";
+	char dest[6];
+	ft_memcpy(dest, src, 6);
+	printf("ft_memcpy: %s\n", dest);
+
+	// ==========================
+	// Tests pour output_utils.c
+	// ==========================
+	ft_putchar_fd('A', 1);
+	ft_putendl_fd(" <- ft_putendl_fd", 1);
+	ft_putnbr_fd(42, 1);
+	ft_putchar_fd('\n', 1);
+	ft_putstr_fd("ft_putstr_fd\n", 1);
+
+	// ==========================
+	// Tests pour string_utils_1.c
+	// ==========================
+	printf("ft_strlen(\"Hello\") = %zu\n", ft_strlen("Hello"));
+	char dst[10];
+	ft_strlcpy(dst, "World", 10);
+	printf("ft_strlcpy: %s\n", dst);
+
+	// ==========================
+	// Tests pour string_utils_2.c
+	// ==========================
+	printf("ft_strncmp(\"abc\", \"abd\", 2) = %d\n", ft_strncmp("abc", "abd", 2));
+	printf("ft_strjoin(\"Hello, \", \"World\") = %s\n", ft_strjoin("Hello, ", "World"));
+
+	// ==========================
+	// Tests pour string_utils_3.c
+	// ==========================
+	printf("ft_strdup(\"Hello\") = %s\n", ft_strdup("Hello"));
+	printf("ft_substr(\"libft\", 0, 3) = %s\n", ft_substr("libft", 0, 3));
+
+	// ==========================
+	// Tests pour string_utils_4.c
+	// ==========================
+	char **split = ft_split("Hello World 42", ' ');
+	for (int i = 0; split[i]; i++)
+	{
+		printf("ft_split[%d] = %s\n", i, split[i]);
+		free(split[i]);
+	}
+	free(split);
+
+	// ==========================
+	// Tests pour ft_printf
+	// ==========================
+	ft_printf("\n===== Tests pour ft_printf =====\n");
+	ft_printf("Caractère : %c\n", 'A');
+	ft_printf("Chaîne : %s\n", "Hello, 42!");
+	ft_printf("Pointeur : %p\n", (void *)0x12345678);
+	ft_printf("Entier signé : %d\n", 42);
+	ft_printf("Entier signé négatif : %i\n", -42);
+	ft_printf("Entier non signé : %u\n", 4294967295);
+	ft_printf("Hexadécimal minuscule : %x\n", 255);
+	ft_printf("Hexadécimal majuscule : %X\n", 255);
+	ft_printf("Pourcentage : %%\n");
+
+	// Test de retour de ft_printf
+	int len = ft_printf("Test de longueur de chaîne : %s\n", "Hello, World!");
+	ft_printf("Longueur imprimée : %d\n", len);
+
+	ft_printf("\n===== Tests pour getnextline =====\n");
+	int fd = open("hardtest_cases.txt", O_RDONLY);
+	char *line = get_next_line(fd);
+	while (line) {
+		printf("->%s<-", line);
+		free(line);
+		line = get_next_line(fd);
+	}
+
+	close(fd);
+	return (0);
+}
+
