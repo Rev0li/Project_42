@@ -6,7 +6,7 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 07:35:23 by okientzl          #+#    #+#             */
-/*   Updated: 2024/12/16 19:56:37 by okientzl         ###   ########.fr       */
+/*   Updated: 2024/12/20 16:32:13 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*****  define NAME  *****/
@@ -14,7 +14,8 @@
 # define PUSH_SWAP_H
 
 /*****  include  *****/
-
+# include <stdlib.h>
+# include <stdio.h>
 /*****  struct  *****/
 typedef struct s_stack
 {
@@ -30,11 +31,11 @@ int check_arg(int argc, char **argv);
 int display_error(void);
 
 /***  utils.c ***/
-long 	ft_atoi(const char *str);
+int 	ft_atoi(const char *str);
 /* lst */
-t_stack	*ft_lstnew(void *content);
+t_stack	*ft_lstnew(int value);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
-void	ft_lstiter(t_stack *lst, void (*f)(void *));
+void	ft_lstiter(t_stack *lst);
 
 /*** operation ***/
 void sa(t_stack **a);

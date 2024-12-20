@@ -6,7 +6,7 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 16:43:48 by okientzl          #+#    #+#             */
-/*   Updated: 2024/12/16 17:27:08 by okientzl         ###   ########.fr       */
+/*   Updated: 2024/12/20 16:14:49 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <limits.h>
@@ -37,7 +37,7 @@ static int	get_sign(const char *str, size_t *i)
 	return (sign);
 }
 
-long 	ft_atoi(const char *str)
+int 	ft_atoi(const char *str)
 {
 	size_t		i;
 	int			sign;
@@ -51,5 +51,5 @@ long 	ft_atoi(const char *str)
 		result = result * 10 + (str[i] - '0');
 		i++;
 	}
-	return (result * sign);
+	return ((int)result * sign);
 }

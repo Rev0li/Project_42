@@ -6,7 +6,7 @@
 #    By: okientzl <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/13 07:26:30 by okientzl          #+#    #+#              #
-#    Updated: 2024/12/16 20:16:00 by okientzl         ###   ########.fr        #
+#    Updated: 2024/12/20 16:36:19 by okientzl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,13 +30,13 @@ OBJ = $(SRCS:.c=.o)
 CC = cc
 
 # Flags of compilation
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 # (Default)
 all: $(NAME)
 
 # Compilation of execut
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) Makefile
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 
 # Compilation of files .c to .o

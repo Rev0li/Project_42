@@ -6,21 +6,16 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 07:40:21 by okientzl          #+#    #+#             */
-/*   Updated: 2024/12/16 20:24:57 by okientzl         ###   ########.fr       */
+/*   Updated: 2024/12/20 16:43:33 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 #include <stdio.h>
 
-void print_node(t_stack *node)
-{
-    printf("%d\n", node->value);
-}
-
 int	main(int argc, char **argv)
 {
-	t_stack	*a;
-	//t_stack *b;
+	t_stack	**a = NULL;
+	//t_stack **b;
 	t_stack *new_node;
 	size_t	i;
 
@@ -31,11 +26,14 @@ int	main(int argc, char **argv)
 	{
 		new_node = ft_lstnew(ft_atoi(argv[i]));
 		if (!new_node)
-			return (display_error());
-		ft_lstadd_back(&a, new_node);
+		{
+			display_error();
+			return (1);
+		}
+		ft_lstadd_back(a, new_node);
 		i++;
 	}
-	ft_lstiter(a, print_node);
+	ft_lstiter(*a);
 
 	return (0);
 }

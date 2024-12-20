@@ -6,19 +6,19 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 19:23:25 by okientzl          #+#    #+#             */
-/*   Updated: 2024/12/16 19:56:20 by okientzl         ###   ########.fr       */
+/*   Updated: 2024/12/20 16:34:26 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../push_swap.h"
 
-t_stack	*ft_lstnew(void *content)
+t_stack	*ft_lstnew(int value)
 {
 	t_stack	*new_node;
 
 	new_node = (t_stack *)malloc(sizeof(t_stack));
 	if (!new_node)
 		return (NULL);
-	new_node->content = content;
+	new_node->value = value;
 	new_node->next = NULL;
 	return (new_node);
 }
@@ -40,13 +40,13 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
 	current->next = new;
 }
 
-void	ft_lstiter(t_stack *lst, void (*f)(void *))
+void	ft_lstiter(t_stack *lst)
 {
-	if (!lst || !f)
+	if (!lst)
 		return ;
 	while (lst != NULL)
 	{
-		f(lst->content);
+		printf("%d\n", lst->value);
 		lst = lst->next;
 	}
 }
