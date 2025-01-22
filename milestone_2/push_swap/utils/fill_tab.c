@@ -6,7 +6,7 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:01:11 by okientzl          #+#    #+#             */
-/*   Updated: 2025/01/21 15:30:00 by okientzl         ###   ########.fr       */
+/*   Updated: 2025/01/22 12:23:06 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../push_swap.h"
@@ -22,7 +22,7 @@ static char	*my_strdup(const char *s)
 	len = 0;
 	while (s[len])
 		len++;
-	copy = (char *)malloc((len + 1) * sizeof(char));
+	copy = (char *)malloc((len + 2) * sizeof(char));
 	if (!copy)
 		return (NULL);
 	i = 0;
@@ -40,7 +40,7 @@ char	**fill_tab(int argc, char **argv)
 	char	**result;
 	int		i;
 
-	result = (char **)malloc((argc) * sizeof(char *));
+	result = malloc((argc - 1) * sizeof(char *));
 	if (!result)
 		return (NULL);
 	i = 0;
@@ -51,6 +51,5 @@ char	**fill_tab(int argc, char **argv)
 			return (free_arg(result, i));
 		i++;
 	}
-	result[i] = NULL;
 	return (result);
 }
