@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   display_error.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/13 07:40:21 by okientzl          #+#    #+#             */
-/*   Updated: 2025/01/21 10:35:20 by okientzl         ###   ########.fr       */
+/*   Created: 2025/01/16 10:26:57 by okientzl          #+#    #+#             */
+/*   Updated: 2025/01/21 09:32:46 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "../push_swap.h"
 
-int	main(int argc, char **argv)
+int	display_error(void)
 {
-	t_stack	*a;
-	t_stack	*b;	
+	write(2, "Error\n", 6);
+	return (1);
+}
 
-	a = NULL;
-	b = NULL;
-	if (check_init(argc, argv, &a))
-		return (display_error());
-	sort_stack(ft_lstsize(a), &a, &b);
-	free_stack(&a);
-	free_stack(&b);
-	return (0);
+char	**free_arg(char **result, int i)
+{
+	while (i > 0)
+		free(result[--i]);
+	free(result);
+	return (NULL);
+}
+
+void	free_stack(t_stack **stack)
+{
+	t_stack	*temp;
+
+	while (*stack)
+	{
+		temp = *stack;
+		*stack = (*stack)->next;
+		free(temp);
+	}
 }

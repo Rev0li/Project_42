@@ -1,37 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   is_function.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/16 18:01:59 by okientzl          #+#    #+#             */
-/*   Updated: 2025/01/14 10:18:27 by okientzl         ###   ########.fr       */
+/*   Created: 2025/01/16 10:28:23 by okientzl          #+#    #+#             */
+/*   Updated: 2025/01/16 10:37:46 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../push_swap.h"
-#include <unistd.h>
 
-static void	push(t_stack **src, t_stack **dest)
+int	is_sorted(t_stack *a)
 {
-	t_stack	*temp;
-
-	if (!*src)
-		return ;
-	temp = *src;
-	*src = (*src)->next;
-	temp->next = *dest;
-	*dest = temp;
+	while (a && a->next)
+	{
+		if (a->value > a->next->value)
+			return (0);
+		a = a->next;
+	}
+	return (1);
 }
 
-void	pa(t_stack **b, t_stack **a)
+int	ft_isdigit(int c)
 {
-	push(b, a);
-	write(1, "pa\n", 3);
+	return (c >= '0' && c <= '9');
 }
 
-void	pb(t_stack **a, t_stack **b)
+int	is_valid_integer(char *str)
 {
-	push(a, b);
-	write(1, "pb\n", 3);
+	int	i;
+
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	if (str[i] == '\0')
+		return (0);
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }

@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst.c                                              :+:      :+:    :+:   */
+/*   ft_init_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/16 19:23:25 by okientzl          #+#    #+#             */
-/*   Updated: 2024/12/16 19:56:20 by okientzl         ###   ########.fr       */
+/*   Created: 2025/01/16 11:07:13 by okientzl          #+#    #+#             */
+/*   Updated: 2025/01/21 10:29:37 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../push_swap.h"
 
-t_stack	*ft_lstnew(void *content)
+static t_stack	*ft_lstnew(int value)
 {
 	t_stack	*new_node;
 
 	new_node = (t_stack *)malloc(sizeof(t_stack));
 	if (!new_node)
 		return (NULL);
-	new_node->content = content;
+	new_node->value = value;
 	new_node->next = NULL;
 	return (new_node);
 }
 
-void	ft_lstadd_back(t_stack **lst, t_stack *new)
+static void	ft_lstadd_back(t_stack **lst, t_stack *new)
 {
 	t_stack	*current;
 
@@ -40,13 +40,48 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
 	current->next = new;
 }
 
-void	ft_lstiter(t_stack *lst, void (*f)(void *))
+int	ft_lstsize(t_stack *lst)
 {
-	if (!lst || !f)
-		return ;
+	int	i;
+
+	i = 0;
+	if (!lst)
+		return (0);
 	while (lst != NULL)
 	{
-		f(lst->content);
+		lst = lst->next;
+		i++;
+	}
+	return (i);
+}
+
+t_stack	*ft_lstlast(t_stack *lst)
+{
+	if (!lst)
+		return (NULL);
+	while (lst->next != NULL)
+	{
 		lst = lst->next;
 	}
+	return (lst);
+}
+
+int	init_stack(int nb_arg, char **tab_arg, t_stack **a)
+{
+	t_stack	*new_node;
+	size_t	i;
+
+	i = 0;
+	while (i < (size_t)nb_arg)
+	{
+		new_node = ft_lstnew(ft_atoi(tab_arg[i]));
+		if (!new_node)
+		{
+			free_stack(a);
+			return (1);
+		}
+		ft_lstadd_back(a, new_node);
+		i++;
+	}
+	return (0);
 }
