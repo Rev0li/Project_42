@@ -1,28 +1,34 @@
-# Makefile pour le projet pipex
-
 NAME = pipex
 
-SRCS = pipex.c
+HEADER = src/pipex.h
+
+SRCS = src/pipex.c	\
+	   src/utils.c
 
 OBJS = $(SRCS:.c=.o)
 
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
-RM = rm -f
+AR = ar rcs
+
+LIB = ult_lib/ult_lib.a
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+$(NAME): $(OBJS) $(LIB)
+	make all -C ult_lib
+	$(CC) $(CFLAGS) $(OBJS) $(LIB) -o $(NAME)
 
-%.o: %.c pipex.h
+%.o: %.c Makefile $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)
+	make clean -C ult_lib
 
 fclean: clean
 	$(RM) $(NAME)
+	make fclean -C ult_lib
 
 re: fclean all
 

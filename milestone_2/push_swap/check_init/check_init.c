@@ -6,17 +6,10 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 10:18:26 by okientzl          #+#    #+#             */
-/*   Updated: 2025/01/21 10:28:57 by okientzl         ###   ########.fr       */
+/*   Updated: 2025/01/22 13:42:24 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../push_swap.h"
-
-/*int	checker()*/
-/*{*/
-/*	if ()*/
-/*		return (1);*/
-/*	return (0);*/
-/*}*/
 
 char	**fill_arg(char **tab_arg, int ac, char **av, int *nb_arg)
 {

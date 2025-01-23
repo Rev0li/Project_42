@@ -6,10 +6,10 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 16:36:05 by okientzl          #+#    #+#             */
-/*   Updated: 2024/12/10 19:01:08 by okientzl         ###   ########.fr       */
+/*   Updated: 2025/01/22 14:05:31 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ult_lib.h"
+#include "../ult_lib.h"
 
 /***** strnstr *****/
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
