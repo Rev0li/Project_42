@@ -10,7 +10,8 @@ HEADER = \
 # Source for main exec
 SRCS = \
 	   src/pipex.c \
-	   src/utils.c
+	   src/utils.c	\
+	   src/clean_free.c
 
 # Directory for obj and dep
 OBJDIR = obj

@@ -6,7 +6,7 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 17:23:10 by okientzl          #+#    #+#             */
-/*   Updated: 2025/02/07 13:54:39 by okientzl         ###   ########.fr       */
+/*   Updated: 2025/02/12 17:52:33 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PIPEX_H
@@ -21,11 +21,11 @@
 # include <fcntl.h>  
 # include <stdlib.h>
 # include "./ult_lib.h"
-int		open_file(char *file, int n);
+
 char	*my_getenv(char *name, char **env);
 char	*get_path(char *cmd, char **env);
 void	exec(char *cmd, char **env);
 void	ft_free_tab(char **tab);
-void	exit_handler(int n_msg);
+void 	cleanup(int *p_fd, int exit_code);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:07:13 by okientzl          #+#    #+#             */
-/*   Updated: 2025/02/06 12:12:53 by okientzl         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:02:11 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../include/push_swap.h"
@@ -71,7 +71,7 @@ int	init_stack(size_t nb_arg, char **tab_arg, t_stack **a)
 	t_stack	*new_node;
 	size_t	i;
 
-	i = 0;
+	i = 1;
 	while (i < nb_arg)
 	{
 		new_node = ft_lstnew(ft_atoi(tab_arg[i]));

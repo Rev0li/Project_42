@@ -6,7 +6,7 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 08:31:17 by okientzl          #+#    #+#             */
-/*   Updated: 2025/02/06 12:16:16 by okientzl         ###   ########.fr       */
+/*   Updated: 2025/02/14 04:27:15 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../include/push_swap.h"
@@ -14,12 +14,12 @@
 static void	sort_to_b(t_stack **a, t_stack **b)
 {
 	int	index;
-	int	threshold;
-
-	threshold = ft_lstsize(*a) / 10;
+	/*int	threshold;*/
+	/**/
+	/*threshold = ft_lstsize(*a) / 10;*/
 	while (*a)
 	{
-		if (ft_lstsize(*a) > threshold)
+		if (ft_lstsize(*a) > 32)
 		{
 			assign_mv_a(a);
 			assign_mv_b(a, b);
