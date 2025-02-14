@@ -1,0 +1,82 @@
+# Name of final executables
+NAME = main
+NAME_BONUS = bonus
+
+# Header for main exec
+HEADER = include/main.h
+
+# Header for bonus exec
+HEADER_BONUS = include/checker_bonus.h
+
+# Source for main exec
+SRCS =	src/main.c
+
+# Source for bonus
+SRCS_BONUS =	src_bonus/_bonus.c
+
+# Directory for obj and dep
+OBJDIR = obj
+
+# Files obj and dep
+OBJ = $(SRCS:src/%.c=$(OBJDIR)/%.o)
+OBJ_BONUS = $(SRCS_BONUS:src_bonus/%.c=$(OBJDIR)/%.o)
+
+DEP = $(OBJ:.o=.d)
+DEP_BONUS = $(OBJ_BONUS:.o=.d)
+
+# Comp flags
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g -MMD -MP
+
+# Librairie ult_lib
+LIB_DIR = lib/ult_lib
+LIB = $(LIB_DIR)/libult.a  # Nom de l'archive statique générée par ult_lib
+
+# Cible par défaut
+all: $(LIB) $(NAME)
+
+# Compilation de ult_lib
+$(LIB):
+	@$(MAKE) -C $(LIB_DIR)  # Appel du Makefile de ult_lib
+
+$(OBJDIR):
+	@mkdir -p $@
+
+# Compilation de l'exécutable principal avec ult_lib
+$(NAME): $(OBJ) | $(OBJDIR)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L$(LIB_DIR) -lult
+
+# Compilation des fichiers source pour le main
+$(OBJDIR)/%.o: src/%.c Makefile $(HEADER) | $(OBJDIR)
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Compilation du bonus (également lié à ult_lib)
+bonus: $(LIB) $(NAME_BONUS)
+
+$(NAME_BONUS): $(OBJ_BONUS) | $(OBJDIR)
+	$(CC) $(CFLAGS) -o $(NAME_BONUS) $(OBJ_BONUS) -L$(LIB_DIR) -lult
+
+# Compilation des fichiers source pour le bonus
+$(OBJDIR)/%.o: src_bonus/%.c $(HEADER_BONUS) | $(OBJDIR)
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Nettoyage des fichiers objets et dépendances
+clean:
+	rm -rf $(OBJDIR)
+	@$(MAKE) -C $(LIB_DIR) clean  # Nettoyage de ult_lib
+
+# Suppression des exécutables + nettoyage de ult_lib
+fclean: clean
+	rm -f $(NAME) $(NAME_BONUS)
+	@$(MAKE) -C $(LIB_DIR) fclean  # fclean dans ult_lib
+
+# Recompilation complète
+re: fclean all
+
+# Inclusion des fichiers de dépendance
+-include $(DEP) $(DEP_BONUS)
+
+.PHONY: all bonus clean fclean re
+
