@@ -44,7 +44,7 @@ static char	*malloc_word(char const *s, char c)
 	word = (char *)malloc((len + 1) * sizeof(char));
 	if (!word)
 	{
-		ft_printf("Erreur : échec de l'allocation mémoire dans malloc_word\n");
+		write(2, "Erreur : échec de l'allocation mémoire dans malloc_word\n", 58);
 		return (NULL);
 	}
 	ft_strlcpy(word, s, len + 1);
@@ -59,23 +59,17 @@ static char	**free_all(char **result, int i)
 	return (NULL);
 }
 
-char	**ft_split(char const *s, char c)
+static char **sort_split(char **result, char const *s, char c)
 {
-	char	**result;
-	int		i;
+	int	i;
 
-	if (!s)
-		return (NULL);
-	result = (char **)malloc((count_words(s, c) + 1) * sizeof(char *));
-	if (!result)
-		return (NULL);
 	i = 0;
 	while (*s)
 	{
 		if (*s != c)
 		{
 			result[i] = malloc_word(s, c);
-			if (!result[i++])
+			if (!result[i++])// REALLY ?
 				return (free_all(result, i - 1));
 			while (*s && *s != c)
 				s++;
@@ -83,6 +77,22 @@ char	**ft_split(char const *s, char c)
 		else
 			s++;
 	}
-	result[i] = NULL;
+	result[i] = NULL;// REALLY ? 
+	return (result);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**result;
+
+	if (!s)
+		return (NULL);
+	result = (char **)malloc((count_words(s, c) + 1) * sizeof(char *));
+	if (!result)
+	{
+		write(2, "Erreur : échec de l'allocation mémoire dans malloc_word\n", 58);
+		return (NULL);
+	}
+	result = sort_split(result, s, c);
 	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 17:03:47 by okientzl          #+#    #+#             */
-/*   Updated: 2024/12/10 20:55:11 by okientzl         ###   ########.fr       */
+/*   Updated: 2025/02/04 08:47:45 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int			ft_toupper(int c);
 int			ft_atoi(const char *str);
 /***** list_utils.c *****/
 t_list		*ft_lstnew(void *content);
-void		ft_lstadd_back(t_list **lst, t_list *new);
-void		ft_lstadd_front(t_list **lst, t_list *new);
+void		ft_lstadd_back(t_list **lst, t_list *crt);
+void		ft_lstadd_front(t_list **lst, t_list *crt);
 void		ft_lstdelone(t_list *lst, void (*del)(void*));
 void		ft_lstclear(t_list **lst, void (*del)(void*));
 /***** list_utils_2.c *****/
@@ -74,6 +74,7 @@ char		*ft_strrchr(const char *s, int c);
 /***** string_utils_2.c *****/
 char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
+int			ft_strcmp(const char *s1, const char *s2);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char		*ft_strjoin(char const *s1, char const *s2);
 /***** string_utils_3.c *****/

@@ -11,47 +11,6 @@
 /* ************************************************************************** */
 #include "../ult_lib.h"
 
-/***** ft_strlen *****/
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	if (!s)
-	{
-		ft_printf("Erreur : pointeur NULL passé à ft_strlen\n");
-		return (0);
-	}
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
-/***** ft_strlcpy *****/
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
-{
-	size_t	i;
-
-	if (!dst || !src)
-	{
-		ft_printf("Erreur : pointeur NULL passé à ft_strlcpy\n");
-		return (0);
-	}
-	i = 0;
-	if (size > 0)
-	{
-		while (src[i] && i < size - 1)
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	while (src[i])
-		i++;
-	return (i);
-}
-
 /***** ft_strlcat *****/
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
@@ -61,8 +20,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 
 	if (!dst || !src)
 	{
-		ft_printf("Erreur : pointeur NULL passé à ft_strlcat\n");
-		return (0);
+		write(2, "Erreur : pointeur NULL passé à ft_strlcat\n", 44);
+		return (-1);
 	}
 	dst_len = ft_strlen(dst);
 	src_len = ft_strlen(src);
@@ -78,43 +37,3 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	return (dst_len + src_len);
 }
 
-/***** ft_strchr *****/
-char	*ft_strchr(const char *s, int c)
-{
-	if (!s)
-	{
-		ft_printf("Erreur : pointeur NULL passé à ft_strchr\n");
-		return (NULL);
-	}
-	while (*s)
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s++;
-	}
-	if (c == '\0')
-		return ((char *)s);
-	return (NULL);
-}
-
-/***** ft_strrchr *****/
-char	*ft_strrchr(const char *s, int c)
-{
-	const char	*last_occurrence;
-
-	last_occurrence = NULL;
-	if (!s)
-	{
-		ft_printf("Erreur : pointeur NULL passé à ft_strrchr\n");
-		return (NULL);
-	}
-	while (*s)
-	{
-		if (*s == (char)c)
-			last_occurrence = s;
-		s++;
-	}
-	if (c == '\0')
-		return ((char *)s);
-	return ((char *)last_occurrence);
-}

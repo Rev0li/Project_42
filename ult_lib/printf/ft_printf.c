@@ -11,7 +11,29 @@
 /* ************************************************************************** */
 #include "../ult_lib.h"
 
-static int	splitter(va_list args, const char *s)
+static int splitter(va_list args, const char *s);
+static int convert(const char *s, va_list args, int len);
+
+int ft_printf(const char *s, ...)
+{
+	int len;
+	va_list args;
+
+	len = 0;
+	if (s == NULL)
+	{
+		if (write(2, "No enter string\n", 16) == -1)
+			return (1);
+		return (1);
+	}
+	va_start(args, s);
+	len = convert(s, args, len);
+	va_end(args);
+	return (len);
+}
+
+
+static int splitter(va_list args, const char *s)
 {
 	if (*s == '%')
 		return (printf_putchar('%'));
@@ -30,7 +52,7 @@ static int	splitter(va_list args, const char *s)
 	return (-1);
 }
 
-static int	convert(const char *s, va_list args, int len)
+static int convert(const char *s, va_list args, int len)
 {
 	int	tmp;
 
@@ -43,24 +65,9 @@ static int	convert(const char *s, va_list args, int len)
 			if (tmp == -1)
 				return (-1);
 			len += tmp;
-		}
-		else
-			len += printf_putchar(*s);
+		} else
+		len += printf_putchar(*s);
 		s++;
 	}
-	return (len);
-}
-
-int	ft_printf(const char *s, ...)
-{
-	int		len;
-	va_list	args;
-
-	len = 0;
-	if (s == NULL)
-		return (-1);
-	va_start(args, s);
-	len = convert(s, args, len);
-	va_end(args);
 	return (len);
 }
