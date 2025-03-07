@@ -6,7 +6,7 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 13:23:48 by okientzl          #+#    #+#             */
-/*   Updated: 2025/03/06 11:59:15 by okientzl         ###   ########.fr       */
+/*   Updated: 2025/03/07 10:36:09 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/fdf.h"
@@ -106,9 +106,9 @@ void	draw_map(t_data *data)
 	int			row_len;
 	t_transform transform;
 
-	data->scale = compute_scale(data) / 2;
+	data->scale = compute_scale(data);
     transform.x_off = W_WIDTH / 2;
-    transform.y_off = W_HEIGHT / 4;
+    transform.y_off = W_HEIGHT / 2;
 	i = 0;
 	while (i < data->height)
 	{

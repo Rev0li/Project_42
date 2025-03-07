@@ -6,7 +6,7 @@
 /*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 17:39:09 by okientzl          #+#    #+#             */
-/*   Updated: 2025/03/06 13:41:28 by okientzl         ###   ########.fr       */
+/*   Updated: 2025/03/07 10:45:21 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct s_data
 	int		fd;
 	int		height;
 	int		min_width;
-	int		scale;
+	double	scale;
 	t_coord	**map;
 	int		error_code;
 	char	*error_message;
@@ -101,6 +101,6 @@ void	draw_map(t_data *data);
 t_coord	project_iso(t_coord pt, int scale);
 
 // compute_scale.c
-int	compute_scale(t_data *data);
+int		compute_scale(t_data *data);
 
 #endif
