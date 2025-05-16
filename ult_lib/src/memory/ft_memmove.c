@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: okientzl <okientzl@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 17:10:48 by okientzl          #+#    #+#             */
-/*   Updated: 2025/02/27 17:11:02 by okientzl         ###   ########.fr       */
+/*   Created: 2025/05/16 08:42:31 by okientzl          #+#    #+#             */
+/*   Updated: 2025/05/16 08:42:31 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../include/ult_lib.h"

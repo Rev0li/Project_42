@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: okientzl <okientzl@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 19:33:20 by okientzl          #+#    #+#             */
-/*   Updated: 2025/02/27 19:33:20 by okientzl         ###   ########.fr       */
+/*   Created: 2025/05/16 08:59:56 by okientzl          #+#    #+#             */
+/*   Updated: 2025/05/16 08:59:56 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../include/ult_lib.h"

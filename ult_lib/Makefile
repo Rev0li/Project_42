@@ -12,9 +12,6 @@ SRCS := $(addprefix $(SRC_DIR), $(SRCS))
 # Name of final library
 NAME = ult_lib.a
 
-# Header
-HEADER = include/ult_lib.h
-
 # Directory for obj and dep
 OBJDIR = obj
 DEPDIR = dep

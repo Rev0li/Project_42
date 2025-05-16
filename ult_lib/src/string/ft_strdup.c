@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: okientzl <okientzl@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 17:44:46 by okientzl          #+#    #+#             */
-/*   Updated: 2025/02/27 17:44:46 by okientzl         ###   ########.fr       */
+/*   Created: 2025/05/16 09:03:27 by okientzl          #+#    #+#             */
+/*   Updated: 2025/05/16 09:03:27 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../include/ult_lib.h"
+#include "../../include/ft_xmalloc.h"
 
 /***** strdup *****/
 char	*ft_strdup(const char *s)
@@ -23,12 +24,7 @@ char	*ft_strdup(const char *s)
 		return (NULL);
 	}
 	len = ft_strlen(s);
-	copy = (char *)malloc((len + 1) * sizeof(char));
-	if (!copy)
-	{
-		write(2, "Error : Fail malloc in ft_strdup\n", 33);
-		return (NULL);
-	}
+	copy = (char *)ft_xmalloc((len + 1) * sizeof(char));
 	ft_memcpy(copy, s, len);
 	copy[len] = '\0';
 	return (copy);

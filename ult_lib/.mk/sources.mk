@@ -1,3 +1,6 @@
+HEADER = include/ult_lib.h \
+		 include/ft_xmalloc.h
+
 SRCS = \
 	fd/ft_putchar_fd.c \
 	fd/ft_putendl_fd.c \
@@ -22,6 +25,7 @@ SRCS = \
 	memory/ft_bzero.c \
 	memory/ft_calloc.c \
 	memory/ft_realloc.c \
+	memory/ft_xmalloc.c \
 	\
 	string/ft_strchr.c \
 	string/ft_strlcat.c \
@@ -44,6 +48,7 @@ SRCS = \
 	is_ft/ft_isprint.c \
 	is_ft/ft_isascii.c \
 	is_ft/is_interger.c \
+	is_ft/ft_iswhitespace.c \
 	\
 	get_size/get_int_size.c \
 	get_size/ft_strlen.c \

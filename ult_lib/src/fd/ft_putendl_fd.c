@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: okientzl <okientzl@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 18:08:10 by okientzl          #+#    #+#             */
-/*   Updated: 2025/02/27 18:11:02 by okientzl         ###   ########.fr       */
+/*   Created: 2025/05/16 08:50:22 by okientzl          #+#    #+#             */
+/*   Updated: 2025/05/16 08:50:22 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../include/ult_lib.h"

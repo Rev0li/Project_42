@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: okientzl <okientzl@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/01 12:04:42 by okientzl          #+#    #+#             */
-/*   Updated: 2025/03/01 14:16:30 by okientzl         ###   ########.fr       */
+/*   Created: 2025/05/16 08:43:03 by okientzl          #+#    #+#             */
+/*   Updated: 2025/05/16 08:43:03 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "../../include/ft_xmalloc.h"
 #include "../../include/ult_lib.h"
 
 void	*ft_realloc(void *ptr, size_t old_size, size_t new_size)
@@ -17,13 +18,13 @@ void	*ft_realloc(void *ptr, size_t old_size, size_t new_size)
 	size_t	copy_size;
 
 	if (!ptr)
-		return (malloc(new_size));
+		return (ft_xmalloc(new_size));
 	if (new_size == 0)
 	{
 		free(ptr);
 		return (NULL);
 	}
-	new_ptr = malloc(new_size);
+	new_ptr = ft_xmalloc(new_size);
 	if (!new_ptr)
 		return (NULL);
 	if (old_size < new_size)

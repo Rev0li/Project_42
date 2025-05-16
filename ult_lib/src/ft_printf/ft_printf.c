@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: okientzl <okientzl@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 10:36:38 by okientzl          #+#    #+#             */
-/*   Updated: 2025/02/27 18:18:34 by okientzl         ###   ########.fr       */
+/*   Created: 2025/05/16 09:08:08 by okientzl          #+#    #+#             */
+/*   Updated: 2025/05/16 09:08:08 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../include/ult_lib.h"

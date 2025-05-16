@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: okientzl <okientzl@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 17:43:23 by okientzl          #+#    #+#             */
-/*   Updated: 2025/02/27 17:43:23 by okientzl         ###   ########.fr       */
+/*   Created: 2025/05/16 09:06:50 by okientzl          #+#    #+#             */
+/*   Updated: 2025/05/16 09:06:50 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../include/ult_lib.h"

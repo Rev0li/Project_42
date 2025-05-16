@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lastadd_front.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: okientzl <okientzl@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 19:27:39 by okientzl          #+#    #+#             */
-/*   Updated: 2025/02/27 19:27:39 by okientzl         ###   ########.fr       */
+/*   Created: 2025/05/16 08:58:22 by okientzl          #+#    #+#             */
+/*   Updated: 2025/05/16 08:58:22 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../include/ult_lib.h"

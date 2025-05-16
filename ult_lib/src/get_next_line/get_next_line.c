@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: okientzl <okientzl@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/24 13:21:41 by okientzl          #+#    #+#             */
-/*   Updated: 2025/03/02 16:17:11 by okientzl         ###   ########.fr       */
+/*   Created: 2025/05/16 09:09:47 by okientzl          #+#    #+#             */
+/*   Updated: 2025/05/16 09:09:47 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../include/ult_lib.h"

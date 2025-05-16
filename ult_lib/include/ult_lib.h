@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ult_lib.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: okientzl <okientzl@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/10 17:03:47 by okientzl          #+#    #+#             */
-/*   Updated: 2025/03/02 16:17:54 by okientzl         ###   ########.fr       */
+/*   Created: 2025/05/16 08:36:38 by okientzl          #+#    #+#             */
+/*   Updated: 2025/05/16 08:36:38 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define ULT_LIB_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1 
+#  define BUFFER_SIZE 1000 
 # endif
 
 # include <stdlib.h>
@@ -35,6 +35,7 @@ int			ft_isalnum(int c);
 int			ft_isascii(int c);
 int			ft_isprint(int c);
 int			is_integer(char *str);
+int			ft_iswhitespace(int c);
 
 /***** conversion *****/
 char		*ft_itoa(int n);

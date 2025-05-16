@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: okientzl <okientzl@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 15:44:37 by okientzl          #+#    #+#             */
-/*   Updated: 2025/02/27 15:44:37 by okientzl         ###   ########.fr       */
+/*   Created: 2025/05/16 08:53:13 by okientzl          #+#    #+#             */
+/*   Updated: 2025/05/16 08:53:13 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../include/ult_lib.h"

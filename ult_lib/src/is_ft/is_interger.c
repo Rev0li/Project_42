@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_interger.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: okientzl <okientzl@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 18:23:48 by okientzl          #+#    #+#             */
-/*   Updated: 2025/02/27 18:24:43 by okientzl         ###   ########.fr       */
+/*   Created: 2025/05/16 08:54:08 by okientzl          #+#    #+#             */
+/*   Updated: 2025/05/16 08:54:08 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <limits.h>

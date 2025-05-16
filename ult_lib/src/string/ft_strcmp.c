@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: okientzl <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: okientzl <okientzl@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 17:36:16 by okientzl          #+#    #+#             */
-/*   Updated: 2025/02/27 17:37:00 by okientzl         ###   ########.fr       */
+/*   Created: 2025/05/16 09:03:15 by okientzl          #+#    #+#             */
+/*   Updated: 2025/05/16 09:03:15 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../include/ult_lib.h"
