@@ -6,7 +6,7 @@
 /*   By: okientzl <okientzl@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 16:27:36 by okientzl          #+#    #+#             */
-/*   Updated: 2025/05/16 12:44:13 by okientzl         ###   ########.fr       */
+/*   Updated: 2025/05/19 09:42:47 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILO_H
@@ -40,10 +40,17 @@ typedef struct s_data
 }		t_data;
 
 /***** PHILO *****/
-int	init_simulation(t_data *data);
-int	start_simulation(t_data *data);
+int		init_simulation(t_data *data);
+int		start_simulation(t_data *data);
+void	*philosopher_routine(void *arg);
+void	*supervisor(void *arg);
+void	philo_print(t_philosopher *philo, const char *msg);
 
 /***** UTILS *****/
 int		ft_atoi(const char *str);
 int		ft_safe_atoi(const char *str, int *dest);
+long	ft_get_time_in_ms(void);
+void	cleanup_simulation(t_data *data);
+void	smart_sleep(long duration_ms, t_data *data);
+
 #endif

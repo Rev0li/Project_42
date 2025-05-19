@@ -6,7 +6,7 @@
 /*   By: okientzl <okientzl@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 16:26:51 by okientzl          #+#    #+#             */
-/*   Updated: 2025/05/16 12:38:08 by okientzl         ###   ########.fr       */
+/*   Updated: 2025/05/19 11:03:06 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philo.h"
@@ -47,11 +47,19 @@ int	main(int argc, char **argv)
 	}
 	if (init_simulation(data))
 	{
-		printf("Error: failed to init simulation");
+		printf("Error: failed to init simulation\n");
 		mem_free_all();
 		return (1);
 	}
-
+	if (start_simulation(data))
+	{
+		printf("Error: failed to start simulation\n");
+		cleanup_simulation(data);
+		mem_free_all();
+		return (1);
+	}
+	cleanup_simulation(data);
 	mem_free_all();
 	return (0);
 }
+

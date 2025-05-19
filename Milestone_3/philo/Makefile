@@ -1,47 +1,73 @@
-# Name of final executables
-NAME = philo
+# ─── Mandatory and Bonus Makefile ─────────────────────────────
 
+NAME		= philo
+BONUS_NAME	= philo_bonus
+
+# Includes
 include .mk/sources.mk
 include .mk/flags.mk
-# Directory for obj and dep
-OBJDIR = obj
-DEPDIR = dep
 
-# Object and dependency files
-OBJ = $(SRCS:src/%.c=$(OBJDIR)/%.o)
-DEP = $(SRCS:src/%.c=$(DEPDIR)/%.d)
+# Directories
+OBJDIR		= obj
+DEPDIR		= dep
+BONUS_OBJDIR= obj_bonus
+BONUS_DEPDIR= dep_bonus
+
+# Mandatory
+OBJ			= $(SRCS:src/%.c=$(OBJDIR)/%.o)
+DEP			= $(SRCS:src/%.c=$(DEPDIR)/%.d)
+
+# Bonus
+BONUS_OBJ	= $(BONUS_SRCS:bonus/%.c=$(BONUS_OBJDIR)/%.o)
+BONUS_DEP	= $(BONUS_SRCS:bonus/%.c=$(BONUS_DEPDIR)/%.d)
 
 all: $(NAME)
 
-# Create necessary directories
-$(OBJDIR) $(DEPDIR):
+bonus: $(BONUS_NAME)
+
+# ─── Auto-create folders ──────────────────────────────────────
+
+$(OBJDIR):
 	@mkdir -p $@
 
-### --- Compilation rules --- ###
+$(DEPDIR):
+	@mkdir -p $@
 
-# Compilation of the main executable
+$(BONUS_OBJDIR):
+	@mkdir -p $@
+
+$(BONUS_DEPDIR):
+	@mkdir -p $@
+
+# ─── Compilation rules ────────────────────────────────────────
+
 $(NAME): $(OBJ) | $(OBJDIR) $(DEPDIR)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 
-# Rule of compilation for main exec src 
-$(OBJDIR)/%.o: src/%.c Makefile $(HEADER) | $(OBJDIR) $(DEPDIR)
-	@mkdir -p $(dir $@) $(DEPDIR)/$(dir $<)
-	$(CC) $(CFLAGS) -c $< -o $@ -MF $(DEPDIR)/$(basename $<).d
+$(BONUS_NAME): $(BONUS_OBJ) | $(BONUS_OBJDIR) $(BONUS_DEPDIR)
+	$(CC) $(CFLAGS) -o $(BONUS_NAME) $(BONUS_OBJ)
 
-### --- Classic rules --- ###
+$(OBJDIR)/%.o: src/%.c Makefile $(HEADER)
+	@mkdir -p $(dir $@)
+	@mkdir -p $(dir $(DEPDIR)/$<)
+	$(CC) $(CFLAGS) $(INC) -MMD -MP -c $< -o $@ -MF $(DEPDIR)/$(basename $<).d
 
-# Clean : delete folder obj
+$(BONUS_OBJDIR)/%.o: bonus/%.c Makefile $(HEADER) | $(BONUS_OBJDIR) $(BONUS_DEPDIR)
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(INC) -MMD -MP -c $< -o $@ -MF $(BONUS_DEPDIR)/$(basename $<).d
+
+# ─── Cleaning rules ───────────────────────────────────────────
+
 clean:
-	rm -rf $(OBJDIR) $(DEPDIR)
+	rm -rf $(OBJDIR) $(DEPDIR) $(BONUS_OBJDIR) $(BONUS_DEPDIR)
 
-# Fclean : delete exec and clean
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(BONUS_NAME)
 
-# Recompile everything from scratch
 re: fclean all
 
-# Include file of dep
 -include $(DEP)
+-include $(BONUS_DEP)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
+
