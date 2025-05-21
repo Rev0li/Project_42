@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/mutex_utils.h"
-#include <stdio.h>
+#include <unistd.h>
 
 int	lock_mutex(pthread_mutex_t *mutex)
 {
 	if (pthread_mutex_lock(mutex))
 	{
-		printf("Error: mutex lock failed\n");
+		write(2, "mutex_lock failed\n", 18);
 		return (1);
 	}
 	return (0);
@@ -26,7 +26,7 @@ int	unlock_mutex(pthread_mutex_t *mutex)
 {
 	if (pthread_mutex_unlock(mutex))
 	{
-		printf("Error: mutex unlock failed\n");
+		write(2, "mutex_unlock failed\n", 20);
 		return (1);
 	}
 	return (0);

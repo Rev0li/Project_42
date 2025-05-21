@@ -6,8 +6,6 @@ HEADER = \
 SRCS = \
 	   src/main.c				\
 	   src/philo.c				\
-	   src/memory.c				\
-	   src/init.c				\
 	   src/mutex_utils.c		\
 	   src/start.c				\
 	   \
@@ -15,6 +13,7 @@ SRCS = \
 	   src/utils/ft_safe_atoi.c	\
 	   src/utils/sleep_utils.c	\
 	   src/utils/cleanup.c	\
+	   src/utils/memory.c	\
 	   src/utils/ft_get_time_in_ms.c
 
 BONUS_SRCS = bonus/main_bonus.c \

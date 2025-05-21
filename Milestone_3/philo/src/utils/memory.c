@@ -9,14 +9,13 @@
 /*   Updated: 2025/05/13 19:23:40 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../includes/memory.h"
+#include "../../includes/memory.h"
 #include <stdlib.h>
 #include <stdio.h>
 
 static t_mem_node	**get_mem_list(void)
 {
 	static t_mem_node	*head = NULL;
-
 	return (&head);
 }
 
@@ -29,7 +28,7 @@ void	mem_register(void *ptr)
 	node = malloc(sizeof * node);
 	if (node == NULL)
 	{
-		perror("minishell: malloc");
+		perror("error: malloc\n");
 		mem_free_all();
 		exit(EXIT_FAILURE);
 	}
@@ -63,7 +62,7 @@ void	*ft_xmalloc(size_t size)
 	p = malloc(size);
 	if (p == NULL)
 	{
-		perror("minishell: malloc");
+		perror("error: malloc\n");
 		mem_free_all();
 		exit(EXIT_FAILURE);
 	}

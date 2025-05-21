@@ -11,7 +11,16 @@
 /* ************************************************************************** */
 #include <sys/time.h>
 #include <stdlib.h>
-
+/*
+	╔════════════════════╦══════════════════════════════════════╗
+	║     Unit           ║     3 seconds expressed as...        ║
+	╠════════════════════╬══════════════════════════════════════╣
+	║ Seconds (s)        ║ 3                                    ║
+	║ Milliseconds (ms)  ║ 3 * 1,000         = 3,000 ms         ║
+	║ Microseconds (µs)  ║ 3 * 1,000,000     = 3,000,000 µs     ║
+	║ Nanoseconds (ns)   ║ 3 * 1,000,000,000 = 3,000,000,000 ns ║
+	╚════════════════════╩══════════════════════════════════════╝
+*/
 long	ft_get_time_in_ms(void)
 {
 	struct timeval	tv;
@@ -19,4 +28,3 @@ long	ft_get_time_in_ms(void)
 	gettimeofday(&tv, NULL);
 	return ((tv.tv_sec * 1000L) + (tv.tv_usec / 1000L));
 }
-
