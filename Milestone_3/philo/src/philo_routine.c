@@ -6,7 +6,7 @@
 /*   By: okientzl <okientzl@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 06:01:26 by okientzl          #+#    #+#             */
-/*   Updated: 2025/05/21 06:01:29 by okientzl         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:56:07 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philo.h"
@@ -52,6 +52,9 @@ static void	philo_eat(t_philosopher *philo)
 	lock_mutex(&philo->meal_lock);
 	philo->last_meal = ft_get_time_in_ms();
 	philo->meals_eaten++;
+	if (philo->data->meals_required != -1
+		&& philo->meals_eaten == philo->data->meals_required)
+		philo->has_finished = 1;
 	unlock_mutex(&philo->meal_lock);
 	smart_sleep(philo->data->t_to_eat, philo->data);
 	unlock_fork(philo, 1);
@@ -66,17 +69,21 @@ static void	philo_sleep(t_philosopher *philo)
 
 void	*philosopher_routine(void *arg)
 {
-	t_philosopher *philo = (t_philosopher *)arg;
+	t_philosopher	*philo;
 
+	philo = (t_philosopher *)arg;
 	if (philo->id % 2 == 0)
+	{
+		philo_print(philo, "is thinking");
 		smart_sleep(philo->data->t_to_eat, philo->data);
+	}
 	while (1)
 	{
 		lock_mutex(&philo->data->sim_lock);
 		if (philo->data->stop_simulation)
 		{
 			unlock_mutex(&philo->data->sim_lock);
-			break;
+			break ;
 		}
 		unlock_mutex(&philo->data->sim_lock);
 		philo_print(philo, "is thinking");
@@ -86,4 +93,3 @@ void	*philosopher_routine(void *arg)
 	}
 	return (NULL);
 }
-

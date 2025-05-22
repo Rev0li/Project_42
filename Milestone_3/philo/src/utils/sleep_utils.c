@@ -13,6 +13,16 @@
 #include "../../includes/mutex_utils.h"
 #include <unistd.h>
 
+int	lock_print(t_data *data)
+{
+	return (lock_mutex(&data->print_lock));
+}
+
+int	unlock_print(t_data *data)
+{
+	return (unlock_mutex(&data->print_lock));
+}
+
 void	smart_sleep(long duration_ms, t_data *data)
 {
 	long	start;
@@ -24,13 +34,11 @@ void	smart_sleep(long duration_ms, t_data *data)
 		if (data->stop_simulation)
 		{
 			unlock_mutex(&data->sim_lock);
-			break;
+			break ;
 		}
 		unlock_mutex(&data->sim_lock);
-
 		if (ft_get_time_in_ms() - start >= duration_ms)
-			break;
+			break ;
 		usleep(250);
 	}
 }
-

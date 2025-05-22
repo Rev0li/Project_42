@@ -6,7 +6,7 @@
 /*   By: okientzl <okientzl@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:08:59 by okientzl          #+#    #+#             */
-/*   Updated: 2025/05/19 11:08:59 by okientzl         ###   ########.fr       */
+/*   Updated: 2025/05/22 12:02:54 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../includes/philo.h"
@@ -14,7 +14,7 @@
 
 void	cleanup_simulation(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < data->nbr_philo)
@@ -29,7 +29,7 @@ void	cleanup_simulation(t_data *data)
 
 int	exit_clean(char *msg, bool do_clean_simu, t_data *data)
 {
-	printf("%s\n",msg);
+	printf("%s\n", msg);
 	if (do_clean_simu == true)
 		cleanup_simulation(data);
 	mem_free_all();

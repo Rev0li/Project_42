@@ -48,14 +48,3 @@ int	unlock_fork(t_philosopher *philo, int side)
 	else
 		return (unlock_mutex(philo->right_fork));
 }
-
-int	lock_print(t_data *data)
-{
-	return (lock_mutex(&data->print_lock));
-}
-
-int	unlock_print(t_data *data)
-{
-	return (unlock_mutex(&data->print_lock));
-}
-

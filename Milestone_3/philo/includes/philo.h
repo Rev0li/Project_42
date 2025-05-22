@@ -6,7 +6,7 @@
 /*   By: okientzl <okientzl@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 16:27:36 by okientzl          #+#    #+#             */
-/*   Updated: 2025/05/19 09:42:47 by okientzl         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:27:34 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILO_H
@@ -23,9 +23,10 @@ typedef struct s_philosopher
 	pthread_t		thread;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
-	pthread_mutex_t meal_lock;
+	pthread_mutex_t	meal_lock;
 	long			last_meal;
 	int				meals_eaten;
+	int				has_finished;
 	struct s_data	*data;
 }		t_philosopher;
 

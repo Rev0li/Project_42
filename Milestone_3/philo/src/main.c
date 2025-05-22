@@ -6,7 +6,7 @@
 /*   By: okientzl <okientzl@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 16:26:51 by okientzl          #+#    #+#             */
-/*   Updated: 2025/05/21 06:01:55 by okientzl         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:55:12 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philo.h"
@@ -43,37 +43,36 @@ int	init_simulation(t_data *data)
 	pthread_mutex_init(&data->print_lock, NULL);
 	pthread_mutex_init(&data->sim_lock, NULL);
 	i = 0;
-	while (i < data->nbr_philo)
+	while (i++ < data->nbr_philo)
 	{
 		pthread_mutex_init(&data->forks[i], NULL);
 		pthread_mutex_init(&data->philos[i].meal_lock, NULL);
-		i++;
 	}
 	i = 0;
-	while (i < data->nbr_philo)
+	while (i++ < data->nbr_philo)
 	{
 		data->philos[i].id = i + 1;
 		data->philos[i].meals_eaten = 0;
+		data->philos[i].has_finished = 0;
 		data->philos[i].data = data;
 		data->philos[i].last_meal = ft_get_time_in_ms();
 		data->philos[i].left_fork = &data->forks[i];
 		data->philos[i].right_fork = &data->forks[(i + 1) % data->nbr_philo];
-		i++;
 	}
 	return (0);
 }
 
 int	main(int argc, char **argv)
 {
-	t_data *data;
+	t_data	*data;
 
 	data = ft_xmalloc(sizeof(t_data));
 	if (parse_args(data, argc, argv))
-		return(exit_clean("Error: invalid arguments", false, data));
+		return (exit_clean("Error: invalid arguments", false, data));
 	if (init_simulation(data))
-		return(exit_clean("Error: failed to init simulation", false, data));
+		return (exit_clean("Error: failed to init simulation", false, data));
 	if (start_simulation(data))
-		return(exit_clean("Error: failed to start simulation", true, data));
+		return (exit_clean("Error: failed to start simulation", true, data));
 	cleanup_simulation(data);
 	mem_free_all();
 	return (0);

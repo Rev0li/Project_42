@@ -16,6 +16,7 @@
 static t_mem_node	**get_mem_list(void)
 {
 	static t_mem_node	*head = NULL;
+
 	return (&head);
 }
 

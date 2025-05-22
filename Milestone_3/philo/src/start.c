@@ -6,7 +6,7 @@
 /*   By: okientzl <okientzl@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 06:01:19 by okientzl          #+#    #+#             */
-/*   Updated: 2025/05/21 06:01:23 by okientzl         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:04:18 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <sys/time.h>
@@ -33,11 +33,9 @@ int	solo_philo(t_data *data)
 	philo_print(&data->philos[0], "has taken a fork");
 	smart_sleep(data->t_to_die, data);
 	philo_print(&data->philos[0], "died");
-
 	lock_mutex(&data->sim_lock);
 	data->stop_simulation = 1;
 	unlock_mutex(&data->sim_lock);
-
 	return (0);
 }
 
@@ -49,7 +47,6 @@ int	start_simulation(t_data *data)
 	data->start_time = ft_get_time_in_ms();
 	if (data->nbr_philo == 1)
 		return (solo_philo(data));
-
 	i = 0;
 	while (i < data->nbr_philo)
 	{
@@ -61,7 +58,5 @@ int	start_simulation(t_data *data)
 	}
 	if (pthread_create(&supervisor_thread, NULL, supervisor, data))
 		return (1);
-
 	return (wait_threads(data, supervisor_thread));
 }
-
