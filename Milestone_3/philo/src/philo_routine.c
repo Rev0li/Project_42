@@ -66,6 +66,12 @@ static void	philo_sleep(t_philosopher *philo)
 	philo_print(philo, "is sleeping");
 	smart_sleep(philo->data->t_to_sleep, philo->data);
 }
+static void	philo_think(t_philosopher *philo)
+{
+	philo_print(philo, "is thinking");
+	if (philo->id % 2 == 0)
+		smart_sleep(philo->data->t_to_eat, philo->data);
+}
 
 void	*philosopher_routine(void *arg)
 {
@@ -86,7 +92,7 @@ void	*philosopher_routine(void *arg)
 			break ;
 		}
 		unlock_mutex(&philo->data->sim_lock);
-		philo_print(philo, "is thinking");
+		philo_think(philo);
 		philo_take_forks(philo);
 		philo_eat(philo);
 		philo_sleep(philo);

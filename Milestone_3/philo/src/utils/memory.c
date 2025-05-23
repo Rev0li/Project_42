@@ -29,7 +29,7 @@ void	mem_register(void *ptr)
 	node = malloc(sizeof * node);
 	if (node == NULL)
 	{
-		perror("error: malloc\n");
+		printf("error: malloc\n");
 		mem_free_all();
 		exit(EXIT_FAILURE);
 	}
@@ -63,7 +63,7 @@ void	*ft_xmalloc(size_t size)
 	p = malloc(size);
 	if (p == NULL)
 	{
-		perror("error: malloc\n");
+		printf("error: malloc\n");
 		mem_free_all();
 		exit(EXIT_FAILURE);
 	}

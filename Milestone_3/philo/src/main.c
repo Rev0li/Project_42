@@ -43,14 +43,10 @@ int	init_simulation(t_data *data)
 	pthread_mutex_init(&data->print_lock, NULL);
 	pthread_mutex_init(&data->sim_lock, NULL);
 	i = 0;
-	while (i++ < data->nbr_philo)
+	while (i < data->nbr_philo)
 	{
 		pthread_mutex_init(&data->forks[i], NULL);
 		pthread_mutex_init(&data->philos[i].meal_lock, NULL);
-	}
-	i = 0;
-	while (i++ < data->nbr_philo)
-	{
 		data->philos[i].id = i + 1;
 		data->philos[i].meals_eaten = 0;
 		data->philos[i].has_finished = 0;
@@ -58,6 +54,7 @@ int	init_simulation(t_data *data)
 		data->philos[i].last_meal = ft_get_time_in_ms();
 		data->philos[i].left_fork = &data->forks[i];
 		data->philos[i].right_fork = &data->forks[(i + 1) % data->nbr_philo];
+		i++;
 	}
 	return (0);
 }

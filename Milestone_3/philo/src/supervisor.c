@@ -6,7 +6,7 @@
 /*   By: okientzl <okientzl@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 06:00:59 by okientzl          #+#    #+#             */
-/*   Updated: 2025/05/22 13:56:34 by okientzl         ###   ########.fr       */
+/*   Updated: 2025/05/22 14:01:38 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philo.h"
