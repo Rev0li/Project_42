@@ -13,6 +13,22 @@
 #include "../../includes/mutex_utils.h"
 #include <unistd.h>
 
+void	philo_print(t_philosopher *philo, const char *msg)
+{
+	lock_mutex(&philo->data->sim_lock);
+	if (!philo->data->stop_simulation)
+	{
+		unlock_mutex(&philo->data->sim_lock);
+		lock_mutex(&philo->data->print_lock);
+		printf("%ld %d %s\n",
+			ft_get_time_in_ms() - philo->data->start_time,
+			philo->id, msg);
+		unlock_mutex(&philo->data->print_lock);
+	}
+	else
+		unlock_mutex(&philo->data->sim_lock);
+}
+
 int	lock_print(t_data *data)
 {
 	return (lock_mutex(&data->print_lock));

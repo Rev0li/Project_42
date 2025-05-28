@@ -14,6 +14,7 @@
 # define MEMORY_H
 
 # include <stddef.h>
+# include "./philo.h"
 
 typedef struct s_mem_node
 {
@@ -21,8 +22,8 @@ typedef struct s_mem_node
 	struct s_mem_node	*next;
 }		t_mem_node;
 
-void	*ft_xmalloc(size_t size);
-void	mem_register(void *ptr);
+void	*ft_xmalloc(size_t size, t_data *data);
+void	mem_register(void *ptr, t_data *data);
 void	mem_free_all(void);
 
 #endif /* MEMORY_H */

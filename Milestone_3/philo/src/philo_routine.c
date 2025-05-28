@@ -12,22 +12,6 @@
 #include "../includes/philo.h"
 #include "../includes/mutex_utils.h"
 
-void	philo_print(t_philosopher *philo, const char *msg)
-{
-	lock_mutex(&philo->data->sim_lock);
-	if (!philo->data->stop_simulation)
-	{
-		unlock_mutex(&philo->data->sim_lock);
-		lock_mutex(&philo->data->print_lock);
-		printf("%ld %d %s\n",
-			ft_get_time_in_ms() - philo->data->start_time,
-			philo->id, msg);
-		unlock_mutex(&philo->data->print_lock);
-	}
-	else
-		unlock_mutex(&philo->data->sim_lock);
-}
-
 static void	philo_take_forks(t_philosopher *philo)
 {
 	if (philo->id % 2 == 0)
@@ -50,27 +34,34 @@ static void	philo_eat(t_philosopher *philo)
 {
 	philo_print(philo, "is eating");
 	lock_mutex(&philo->meal_lock);
-	philo->last_meal = ft_get_time_in_ms();
 	philo->meals_eaten++;
 	if (philo->data->meals_required != -1
 		&& philo->meals_eaten == philo->data->meals_required)
 		philo->has_finished = 1;
+	philo->last_meal = ft_get_time_in_ms();
 	unlock_mutex(&philo->meal_lock);
 	smart_sleep(philo->data->t_to_eat, philo->data);
 	unlock_fork(philo, 1);
 	unlock_fork(philo, 0);
+	philo->is_thinking = false;
 }
 
 static void	philo_sleep(t_philosopher *philo)
 {
 	philo_print(philo, "is sleeping");
 	smart_sleep(philo->data->t_to_sleep, philo->data);
+	if (philo->data->nbr_philo % 2 != 0)
+		usleep(500);
+	philo->is_thinking = false;
 }
+
 static void	philo_think(t_philosopher *philo)
 {
-	philo_print(philo, "is thinking");
-	if (philo->id % 2 == 0)
-		smart_sleep(philo->data->t_to_eat, philo->data);
+	if (philo->is_thinking == false)
+	{
+		philo_print(philo, "is thinking");
+		philo->is_thinking = true;
+	}
 }
 
 void	*philosopher_routine(void *arg)
@@ -78,10 +69,11 @@ void	*philosopher_routine(void *arg)
 	t_philosopher	*philo;
 
 	philo = (t_philosopher *)arg;
+	philo->is_thinking = false;
 	if (philo->id % 2 == 0)
 	{
-		philo_print(philo, "is thinking");
-		smart_sleep(philo->data->t_to_eat, philo->data);
+		philo_think(philo);
+		smart_sleep(philo->data->t_to_eat / 2, philo->data);
 	}
 	while (1)
 	{

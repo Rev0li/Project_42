@@ -15,14 +15,11 @@
 
 static int	wait_threads(t_data *data, pthread_t supervisor_thread)
 {
-	int	i;
-
 	pthread_join(supervisor_thread, NULL);
-	i = 0;
-	while (i < data->nbr_philo)
+	while (data->nbr_thread_create < 0)
 	{
-		pthread_join(data->philos[i].thread, NULL);
-		i++;
+		pthread_join(data->philos[data->nbr_thread_create].thread, NULL);
+		data->nbr_thread_create--;
 	}
 	return (0);
 }
@@ -42,19 +39,18 @@ int	solo_philo(t_data *data)
 int	start_simulation(t_data *data)
 {
 	pthread_t	supervisor_thread;
-	int			i;
 
 	data->start_time = ft_get_time_in_ms();
 	if (data->nbr_philo == 1)
 		return (solo_philo(data));
-	i = 0;
-	while (i < data->nbr_philo)
+	data->nbr_thread_create = 0;
+	while (data->nbr_thread_create < data->nbr_philo)
 	{
-		data->philos[i].last_meal = data->start_time;
-		if (pthread_create(&data->philos[i].thread, NULL,
-				philosopher_routine, &data->philos[i]))
+		data->philos[data->nbr_thread_create].last_meal = data->start_time;
+		if (pthread_create(&data->philos[data->nbr_thread_create].thread, NULL,
+				philosopher_routine, &data->philos[data->nbr_thread_create]))
 			return (1);
-		i++;
+		data->nbr_thread_create++;
 	}
 	if (pthread_create(&supervisor_thread, NULL, supervisor, data))
 		return (1);

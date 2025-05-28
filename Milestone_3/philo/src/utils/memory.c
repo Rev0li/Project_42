@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../includes/memory.h"
+#include "../../includes/philo.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -20,7 +21,7 @@ static t_mem_node	**get_mem_list(void)
 	return (&head);
 }
 
-void	mem_register(void *ptr)
+void	mem_register(void *ptr, t_data *data)
 {
 	t_mem_node	*node;
 	t_mem_node	**head;
@@ -31,11 +32,12 @@ void	mem_register(void *ptr)
 	{
 		printf("error: malloc\n");
 		mem_free_all();
-		exit(EXIT_FAILURE);
+		return  (1);
 	}
 	node->ptr = ptr;
 	node->next = *head;
 	*head = node;
+	return (0);
 }
 
 void	mem_free_all(void)
@@ -56,7 +58,7 @@ void	mem_free_all(void)
 	*head = NULL;
 }
 
-void	*ft_xmalloc(size_t size)
+void	*ft_xmalloc(size_t size, t_data *data)
 {
 	void	*p;
 
@@ -65,8 +67,9 @@ void	*ft_xmalloc(size_t size)
 	{
 		printf("error: malloc\n");
 		mem_free_all();
-		exit(EXIT_FAILURE);
+		return (NULL);
 	}
-	mem_register(p);
+	if (mem_register(p, data))
+		return(NULL);
 	return (p);
 }

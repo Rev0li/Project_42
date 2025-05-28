@@ -38,8 +38,8 @@ int	init_simulation(t_data *data)
 {
 	int	i;
 
-	data->forks = ft_xmalloc(sizeof(pthread_mutex_t) * data->nbr_philo);
-	data->philos = ft_xmalloc(sizeof(t_philosopher) * data->nbr_philo);
+	data->forks = ft_xmalloc(sizeof(pthread_mutex_t) * data->nbr_philo, data);
+	data->philos = ft_xmalloc(sizeof(t_philosopher) * data->nbr_philo, data);
 	pthread_mutex_init(&data->print_lock, NULL);
 	pthread_mutex_init(&data->sim_lock, NULL);
 	i = 0;
@@ -63,14 +63,16 @@ int	main(int argc, char **argv)
 {
 	t_data	*data;
 
-	data = ft_xmalloc(sizeof(t_data));
+	data = ft_xmalloc(sizeof(t_data), NULL);
+	if (data == NULL)
+		return(1);
 	if (parse_args(data, argc, argv))
-		return (exit_clean("Error: invalid arguments", false, data));
+		return (destroy_and_free("Error: invalid arguments", false, data));
 	if (init_simulation(data))
-		return (exit_clean("Error: failed to init simulation", false, data));
+		return (destroy_and_free("Error: failed to init simu", false, data));
 	if (start_simulation(data))
-		return (exit_clean("Error: failed to start simulation", true, data));
-	cleanup_simulation(data);
+		return (destroy_and_free("Error: failed to start simu", true, data));
+	cleanup_simulation(data, data->nbr_philo);
 	mem_free_all();
 	return (0);
 }

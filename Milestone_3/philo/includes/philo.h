@@ -28,11 +28,13 @@ typedef struct s_philosopher
 	int				meals_eaten;
 	int				has_finished;
 	struct s_data	*data;
+	bool			is_thinking;
 }		t_philosopher;
 
 typedef struct s_data
 {
 	int				nbr_philo;
+	int				nbr_thread_create;
 	int				t_to_die;
 	int				t_to_eat;
 	int				t_to_sleep;
@@ -55,8 +57,7 @@ void	philo_print(t_philosopher *philo, const char *msg);
 int		ft_atoi(const char *str);
 int		ft_safe_atoi(const char *str, int *dest);
 long	ft_get_time_in_ms(void);
-void	cleanup_simulation(t_data *data);
+void	cleanup_simulation(t_data *data, int max);
 void	smart_sleep(long duration_ms, t_data *data);
-int		exit_clean(char *msg, bool do_clean_simu, t_data *data);
-
+int		destroy_and_free(char *msg, bool do_clean_simu, t_data *data);
 #endif
