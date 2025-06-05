@@ -10,22 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philo.h"
-#include "../includes/mutex_utils.h"
 
 static void	philo_take_forks(t_philosopher *philo)
 {
 	if (philo->id % 2 == 0)
 	{
-		lock_fork(philo, 0);
+		take_fork(philo->left_fork);
 		philo_print(philo, "has taken a fork");
-		lock_fork(philo, 1);
+		take_fork(philo->right_fork);
 		philo_print(philo, "has taken a fork");
 	}
 	else
 	{
-		lock_fork(philo, 1);
+		take_fork(philo->right_fork);
 		philo_print(philo, "has taken a fork");
-		lock_fork(philo, 0);
+		take_fork(philo->left_fork);
 		philo_print(philo, "has taken a fork");
 	}
 }
@@ -41,8 +40,6 @@ static void	philo_eat(t_philosopher *philo)
 	philo->last_meal = ft_get_time_in_ms();
 	unlock_mutex(&philo->meal_lock);
 	smart_sleep(philo->data->t_to_eat, philo->data);
-	unlock_fork(philo, 1);
-	unlock_fork(philo, 0);
 	philo->is_thinking = false;
 }
 
@@ -87,6 +84,7 @@ void	*philosopher_routine(void *arg)
 		philo_think(philo);
 		philo_take_forks(philo);
 		philo_eat(philo);
+		philo_put_forks(philo);
 		philo_sleep(philo);
 	}
 	return (NULL);

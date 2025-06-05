@@ -10,23 +10,68 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../includes/philo.h"
-#include "../../includes/mutex_utils.h"
-#include "../../includes/memory.h"
+
+void	ft_free_all(t_data *data)
+{
+	if (data != NULL)
+	{
+		if (data->forks != NULL)
+		{
+			free(data->forks);
+			data->forks = NULL;
+		}
+		if (data->philos != NULL)
+		{
+			free(data->philos);
+			data->philos = NULL;
+		}
+		free(data);
+		data = NULL;
+	}
+}
+
+void	free_mutex_list(t_mutex_node *list)
+{
+	t_mutex_node	*tmp;
+
+	while (list)
+	{
+		tmp = list;
+		list = list->next;
+		free(tmp);
+	}
+}
+
+void	destroy_mutex_list(t_mutex_node *list)
+{
+	t_mutex_node	*tmp;
+
+	while (list)
+	{
+		pthread_mutex_destroy(list->mutex);
+		tmp = list;
+		list = list->next;
+		free(tmp);
+	}
+}
 
 void	cleanup_simulation(t_data *data, int max)
 {
 	int	i;
 
 	i = 0;
-	while (i < data->nbr_thread_create)
+	if (data->nbr_philo != 1)
 	{
-		pthread_join(data->philos[i].thread, NULL);
-		i++;
+		while (i < data->nbr_thread_create)
+		{
+			pthread_join(data->philos[i].thread, NULL);
+			i++;
+		}
 	}
 	i = 0;
 	while (i < max)
 	{
-		pthread_mutex_destroy(&data->forks[i]);
+		pthread_mutex_destroy(&data->forks[i].locker);
 		pthread_mutex_destroy(&data->philos[i].meal_lock);
 		i++;
 	}
@@ -34,13 +79,15 @@ void	cleanup_simulation(t_data *data, int max)
 	pthread_mutex_destroy(&data->sim_lock);
 }
 
-int	destroy_and_free(char *msg, bool do_clean_simu, t_data *data)
+int	destroy_and_free(char *msg, bool do_clean_simu,
+	t_data *data, t_mutex_node *list)
 {
-	lock_print(data);
 	printf("%s\n", msg);
-	unlock_print(data);
 	if (do_clean_simu == true)
+	{
 		cleanup_simulation(data, data->nbr_thread_create);
-	mem_free_all();
+		free_mutex_list(list);
+	}
+	ft_free_all(data);
 	return (1);
 }

@@ -1,7 +1,5 @@
 HEADER = \
-		 includes/philo.h		\
-		 includes/memory.h		\
-		 includes/mutex_utils.h
+		 includes/philo.h
 
 SRCS = \
 	   src/main.c				\
@@ -10,9 +8,7 @@ SRCS = \
 	   src/start.c				\
 	   src/supervisor.c				\
 	   \
-	   src/utils/ft_atoi.c		\
 	   src/utils/ft_safe_atoi.c	\
 	   src/utils/sleep_utils.c	\
 	   src/utils/cleanup.c	\
-	   src/utils/memory.c	\
 	   src/utils/ft_get_time_in_ms.c

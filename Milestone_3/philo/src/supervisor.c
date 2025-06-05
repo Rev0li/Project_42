@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/philo.h"
-#include "../includes/mutex_utils.h"
 
 static int	check_philo_dead(t_data *data, int i)
 {
@@ -36,7 +35,7 @@ static int	check_philo_dead(t_data *data, int i)
 	return (0);
 }
 
-int	all_philos_ate_enough(t_data *data)
+static int	all_philos_ate_enough(t_data *data)
 {
 	int	j;
 

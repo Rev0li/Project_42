@@ -1,0 +1,4 @@
+1 1 has taken a fork
+416 1 died
+cleanup_simulation: max=1
+destroy fork[1]

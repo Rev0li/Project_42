@@ -9,9 +9,7 @@
 /*   Updated: 2025/05/22 13:04:18 by okientzl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <sys/time.h>
 #include "../includes/philo.h"
-#include "../includes/mutex_utils.h"
 
 static int	wait_threads(t_data *data, pthread_t supervisor_thread)
 {
@@ -24,7 +22,7 @@ static int	wait_threads(t_data *data, pthread_t supervisor_thread)
 	return (0);
 }
 
-int	solo_philo(t_data *data)
+static int	solo_philo(t_data *data)
 {
 	data->start_time = ft_get_time_in_ms();
 	philo_print(&data->philos[0], "has taken a fork");

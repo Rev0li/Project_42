@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../includes/philo.h"
-#include "../../includes/mutex_utils.h"
-#include <unistd.h>
 
 void	philo_print(t_philosopher *philo, const char *msg)
 {
